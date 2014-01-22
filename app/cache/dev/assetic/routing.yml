@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: 'C:/wamp/www/Crazy-Charly-Day/app/config/routing_dev.yml'
