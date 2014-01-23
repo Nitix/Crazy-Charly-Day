@@ -287,3 +287,21 @@ fieldset
     margin-right: auto;
 	font-family: Arial;
 }
+
+.titre{
+	font-family: Impact, fantasy;
+}
+
+table{
+	border-collapse: collapse;
+}
+table td{
+	border-right: 1px solid white;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 5px;
+}
+
+table tr td:last-child{
+	border-right: 0px;
+}
