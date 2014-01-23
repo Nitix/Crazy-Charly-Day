@@ -1,17 +1,18 @@
 <?php
 
-public class restaurant {
-	private $id;
-	private $nom;
-	private $description;
-	private $adresse;
-	private $contact;
-	private $id_theme;
+class panier{
 
-	public function __construct() {}
+	private $idutil;
+	private $idplats;
+	private $nd;
 
-	//public function getCarte() {} // liste [plat][descri] ?
 
+  public function __construct() {
+    // rien à faire
+  }
+
+
+  
   public function __toString() {
         return "idutil : ". $this->idutil . "
 				  idplats : ". $this->idplats  ."
@@ -44,7 +45,7 @@ public class restaurant {
     $c = Base::getConnection();
     
 
-    $query = $c->prepare( "UPDATE restaurant set nb=?
+    $query = $c->prepare( "UPDATE panier set nb=?
 				                   where idutil = ?, idplats=?");
     
     /* 
@@ -76,7 +77,7 @@ public class restaurant {
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection(); 
-    $query = $c->prepare( "DELETE from restaurant where idutil=? ,idplats=?");
+    $query = $c->prepare( "DELETE from panier where idutil=? ,idplats=?");
      //liaison des paramêtres : 
 
     $query->bindParam (1, $this->id_util, PDO::PARAM_INT);
@@ -100,7 +101,7 @@ public class restaurant {
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection();
-    $query = $c->prepare("INSERT INTO restaurant (nb, idutil, idplats) VALUES ( ?, ? , ? )");
+    $query = $c->prepare("INSERT INTO panier (nb, idutil, idplats) VALUES ( ?, ? , ? )");
 
     $query->bindParam (1, $this->nb, PDO::PARAM_STR);
     $query->bindParam (2, $this->idutil, PDO::PARAM_STR); 
@@ -120,18 +121,18 @@ public class restaurant {
    *  
    *   @static
    *   @param integer $id OID to find
-   *   @return restaurant renvoie un objet de type restaurant
+   *   @return panier renvoie un objet de type panier
    */
     public static function findByIdUtil($id) {  
 
       $c = Base::getConnection();
-      $query = $c->prepare("SELECT * from restaurant where idutil =?") ;
+      $query = $c->prepare("SELECT * from panier where idutil =?") ;
     $query->bindParam (1, $id, PDO::PARAM_INT); 
       $dbres = $query->execute();
       $bil = null;
 
       if($d = $query->fetch(PDO::FETCH_BOTH)){
-        $bil = new restaurant();
+        $bil = new panier();
         $bil->idutil=$d['idutil'];
     	$bil->idplats=$d['idplats'];
     	$bil->nb=$d['nb'];
@@ -144,21 +145,21 @@ public class restaurant {
     /**
      *   Finder All
      *
-     *   Renvoie toutes les lignes de la table restaurant
+     *   Renvoie toutes les lignes de la table panier
      *   sous la forme d'un tableau d'objet
      *  
      *   @static
-     *   @return Array renvoie un tableau de restaurant
+     *   @return Array renvoie un tableau de panier
      */
     
     public static function findAll() { 
       
       $c = Base::getConnection();
-      $reponse = $c->prepare("SELECT * FROM restaurant");
+      $reponse = $c->prepare("SELECT * FROM panier");
       $dbres = $reponse->execute(); 
       while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
 
-		$bil = new restaurant();
+		$bil = new panier();
 		$bil->idutil=$d['idutil'];
 		$bil->idplats=$d['idplats'];
 		$bil->nb=$d['nb'];
@@ -170,8 +171,5 @@ public class restaurant {
       return $tab;
 
     }
-
-}
-	public function findByTheme(){}
 
 }
