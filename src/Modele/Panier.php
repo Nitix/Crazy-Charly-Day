@@ -23,7 +23,7 @@ class Panier {
 		if (isset($_SESSION['panier'])) {
 			foreach ($_SESSION['panier'] as $key => $value) {
 				$plat = Plats::findById($key);
-				$tab2 = array('Plat' => $plat, 'Nb' => $value, 'PrixTot' => $value * $plat ->prix);
+				$tab2 = array('Plat' => $plat, 'Nb' => $value, 'theme' => Theme::findById(Restaurant::findById($plat->id_resto)->id_theme)->nom, 'PrixTot' => $value * $plat ->prix);
 				$tab[] = $tab2;
 			}
 		}

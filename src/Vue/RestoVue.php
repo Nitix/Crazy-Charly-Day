@@ -45,8 +45,9 @@ class RestoVue
 					<h1><a href="Accueil">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
-				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
-				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
+				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br /></span>
+				<a href="Panier"><button class="button_panier"><img src="ressource/panier.jpg" /><span>'.Panier::calculTotal().' €</span></button></a>
+
 			</header>
 			<section>'.$body.'</section><br />			
 			<footer><p>'.$chemin.'</p></footer>
@@ -110,12 +111,14 @@ class RestoVue
 		$panier = $this->data;
 		$html =$html."<tr>
 		<th>Nom Plat</th>
+		<th>Theme</th>
 		<th>Prix Unitaire</th>
 		<th>Quantité</th>
 		<th>Prix Total</th>
 		</tr>";
 		foreach ($panier as $value) {
 			$html = $html."<tr><td>".$value["Plat"]->nom.
+							"<td>".$value["theme"]."</td>".
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
 							"</td><td>".$value["PrixTot"].
@@ -124,6 +127,7 @@ class RestoVue
 		}
 		$html =$html."<tr>
 		<td><input type=submit name ='Vider'value ='Vider le Panier'></td>
+		<td></td>
 		<td></td>
 		<td><strong>Total</strong></td>
 		<td>".Panier::calculTotal().'</td>
