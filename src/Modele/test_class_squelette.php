@@ -1,9 +1,6 @@
 <?php
 
 
-include_once 'Base.php';
-//include_once '.php';
-
 echo "<h1>test ....</h1>";
 
 echo "<b>Test 1 : parcours des **** : </b><br/>" ;
