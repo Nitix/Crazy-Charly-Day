@@ -30,10 +30,8 @@ class RestoController extends Controller{
 	}
 
 	// action par defaut de la page visiteur
-	public static function Home(){
-		$alltheme = theme::findAll();
-		$v = new restoVue($alltheme);
-		$v->displayPage("listeTheme"); 
+	public static function home(){
+		self::listeTheme();
 	}
 }
 

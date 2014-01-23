@@ -1,6 +1,6 @@
 <?php
 
-public class restaurant {
+class restaurant {
 	private $id;
 	private $nom;
 	private $description;
@@ -144,8 +144,6 @@ public class restaurant {
       return $tab;
 
     }
-
-}
 	public function findByTheme($theme){
 		$c = Base::getConnection();
 		$reponse = $c->prepare("SELECT * FROM restaurant where id_theme =?");
