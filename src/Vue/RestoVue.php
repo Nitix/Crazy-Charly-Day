@@ -16,10 +16,6 @@ class RestoVue
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
 	
-	if (($data[a]="resto")) {
-		$chem1 = ">Restaurant";
-	} else if ($data[a]="panier") {
-			$chem1=">Panier";
 	if(isset($_GET['a'])){
 		if (($_GET['a']=="plats")) {
 			$resto = $this->data['resto'];

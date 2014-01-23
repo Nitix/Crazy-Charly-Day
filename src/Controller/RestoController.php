@@ -47,7 +47,8 @@ class RestoController extends Controller {
 			}
 		}
 
-		if(isset($_POST["Vider"]))Panier::vider();
+		if(isset($_POST["Vider"]))
+			Panier::vider();
 		
 		if(isset($_POST["supprimer"])){
 			Panier::delete($_POST["supprimer"]);
