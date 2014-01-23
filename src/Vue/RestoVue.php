@@ -45,7 +45,7 @@ class RestoVue
 					<h1><a href="Accueil">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
-				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellement de choix</span>
+				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br /></span>
 				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />			
@@ -110,16 +110,16 @@ class RestoVue
 		$panier = $this->data;
 		$html =$html."<tr>
 		<th>Nom Plat</th>
+		<th>Theme</th>
 		<th>Prix Unitaire</th>
 		<th>Quantité</th>
-		<th>Theme</th>
 		<th>Prix Total</th>
 		</tr>";
 		foreach ($panier as $value) {
 			$html = $html."<tr><td>".$value["Plat"]->nom.
+							"<td>".$value["theme"]."</td>".
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
-							"<td>".$value["theme"]."</td>".
 							"</td><td>".$value["PrixTot"].
 							"</td><td><button type=submit name=supprimer value=".$value['Plat']->id.">Supprimer</button></td>
 							</tr>";
