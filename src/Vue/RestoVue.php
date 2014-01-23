@@ -20,7 +20,7 @@ class RestoVue
 		<head>
 			<meta charset="utf-8">
 			<title>Super ultra-unlimited PHP Zord team 2.0</title>
-			<link rel="stylesheet" href="src\ressource\style.css"/>
+			<link rel="stylesheet" href="ressource/style.css"/>
 		</head>
 		<body>
 			<header>
