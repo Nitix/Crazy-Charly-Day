@@ -107,7 +107,7 @@ class RestoVue
 	}
 
 	public function panier(){
-		$html = '<form class ="panier" ACTION="Panier" method=post><table>';
+		$html = '<form class ="panier" ACTION="Panier" method=post><div><table>';
 		$panier = $this->data;
 		$html =$html."<tr>
 		<th>Nom Plat</th>
@@ -125,16 +125,16 @@ class RestoVue
 							"</td><td><button type=submit name=supprimer value=".$value['Plat']->id.">Supprimer</button></td>
 							</tr>";
 		}
-		$html =$html."<tr>
+		$html =$html."<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td><input type=submit value=\"Mettre à jour\"></td></tr><tr>
 		<td><input type=submit name ='Vider'value ='Vider le Panier'></td>
 		<td></td>
 		<td></td>
 		<td><strong>Total</strong></td>
 		<td>".Panier::calculTotal().'</td>
 		<input type="hidden" name="update" />
-		<td><input type=submit value ="Mise a jour"></td>
+		<td><input type=submit value ="Commander"></td>
 		</tr>';
-		$html = $html."</table></form>";
+		$html = $html."</table></div></form>";
 		return $html;
 	}
 }

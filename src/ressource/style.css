@@ -235,18 +235,25 @@ td{
 	font-weight: bold;
 }
 .panier{
-	width: 65%;
 	background-color : #BC1200;
 	border-bottom: solid 5px;
   	border-color: #000000;
   	display: inline-block;
-
+	padding:20px;
     -moz-border-radius:8px;
     -webkit-border-radius:8px;	
-    border-radius:15px;	
-  	
+    border-radius:15px;		
 }
-
+.panier th
+{
+	min-width : 120px;
+}
+.panier table
+{
+	width: 900px;
+	margin-left: auto;
+	margin-right:auto;
+}
 footer{
 	background-color	: #BC1200;;
 	position			: fixed;
