@@ -110,7 +110,7 @@ public class restaurant {
     $query->bindParam (3, $this->adresse, PDO::PARAM_STR);
     $query->bindParam (4, $this->contact, PDO::PARAM_STR);
     $query->bindParam (5, $this->id_theme, PDO::PARAM_INT);
-    $query->bindParam (6, $this->id, PDO::PARAM_INT);
+   	$this->id = $c->LastInsertId("restaurant");
     
     $query->execute();
 
@@ -128,24 +128,6 @@ public class restaurant {
    *   @param integer $id OID to find
    *   @return restaurant renvoie un objet de type restaurant
    */
-    public static function findByIdUtil($id) {  
-
-      $c = Base::getConnection();
-      $query = $c->prepare("SELECT * from restaurant where idutil =?") ;
-    $query->bindParam (1, $id, PDO::PARAM_INT); 
-      $dbres = $query->execute();
-      $bil = null;
-
-      if($d = $query->fetch(PDO::FETCH_BOTH)){
-        $bil = new restaurant();
-        $bil->idutil=$d['idutil'];
-    	$bil->idplats=$d['idplats'];
-    	$bil->nb=$d['nb'];
-      }
-      return $bil;
-    }
-
-
     
     /**
      *   Finder All
