@@ -18,6 +18,13 @@ class RestoController extends Controller {
 	}
 
 	public static function listePlats() {
+		if (isset($_POST['resto'])) {
+			$plats_resto = Plats::findByResto($_POST['resto']);
+			foreach ($plats_resto as $plat) {
+				if (intval($_POST[$plat -> __get('id')]) > 0)
+					Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
+			}
+		}
 		$res = $_GET["id"];
 		$data['plats'] = Plats::findByResto($res);
 		$data['resto'] = Restaurant::findById($res);
@@ -31,13 +38,6 @@ class RestoController extends Controller {
 	}
 
 	public static function panier() {		
-		if (isset($_POST['resto'])) {
-			$plats_resto = Plats::findByResto($_POST['resto']);
-			foreach ($plats_resto as $plat) {
-				if (intval($_POST[$plat -> __get('id')]) > 0)
-					Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
-			}
-		}
 		if(isset($_POST['update']) && isset($_SESSION['panier'])){
 			$plats_resto = Panier::getArray();
 			foreach ($plats_resto as $key => $value) {

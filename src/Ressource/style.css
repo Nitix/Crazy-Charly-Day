@@ -200,11 +200,47 @@ td{
 	display: inline-block;
 }
 
+#valider{
+	display: inline-block;
+	vertical-align: middle;
+	height: 100px;
+	color : #FFF;
+	background-color : #BC1200;
+	border: 1px;
+	border-bottom: solid 5px;
+	border-radius: 5px;
+  	border-color: #000000;
+}
+
 .panier{
 	width: 700px;
 	background-color : #BC1200;
 	border-bottom: solid 5px;
   	border-color: #000000;
+}
+
+footer{
+	background-color	: #BC1200;;
+	position			: fixed;
+	bottom				: 0;
+	left				: 0;
+	right				: 0;
+	height				: 40px;
+}
+
+footer>p{
+	text-align: left;
+	margin-left: 20px;
+	color: #FFF;
+	text-decoration: none;
+	font: 14px/0 Verdana,Arial;
+	font-weight:bold;
+}
+footer>p>a{
+	color: #FFF;
+	text-decoration: none;
+	font: 14px/0 Verdana,Arial;
+	font-weight:bold;
 }
 
 

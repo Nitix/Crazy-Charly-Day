@@ -47,9 +47,8 @@ class RestoVue
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
 				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
-			<p>'.$chemin.'</p>
-			<section>'.$body.'</section><br />
-
+			<section>'.$body.'</section><br />			
+			<footer><p>'.$chemin.'</p></footer>
 		</body>
 	</html>';
 	}
@@ -88,8 +87,9 @@ class RestoVue
 
 				
 		
-		$html .='<form method="post" action="Panier"><fieldset><legend>Carte</legend><table id="first">';
+		$html .="<form method='post' action='Plats-".$_GET['id']."'><fieldset><legend>Carte</legend><table id='first'>";
 
+		
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
@@ -104,7 +104,7 @@ class RestoVue
 			</tr>';
 		}
 
-		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
+		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input id="valider" type="submit" value="Ajouter au panier"></form></section>';
 		return $html;
 	}
 
