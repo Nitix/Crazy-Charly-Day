@@ -145,6 +145,7 @@ h1 > a{
 	padding: 20px;
 	vertical-align: middle;
 	margin: 0 auto;
+	width: 750px;
 	background-color: #E6E6E6;
 	display: inline-block;
 	border-radius: 20px;
@@ -174,15 +175,15 @@ h1 > a{
 }
 
 form{
-	margin-top: 20px;
+	margin-top: 40px;
 	color : #FFF;
 	
 }
 
 #first{
-	float: left;
 	display: inline-block;
-	margin-right: 25px;
+	vertical-align: middle;
+	margin-right: 40px;
 }
 
 .saisie{
@@ -196,8 +197,9 @@ td{
 }
 
 #second{
-	float: left;
 	display: inline-block;
+	vertical-align: top;
+	margin-right: 40px;
 }
 
 #valider{
@@ -207,8 +209,8 @@ td{
 	color : #FFF;
 	background-color : #BC1200;
 	border: 1px;
-	border-bottom: solid 5px;
-	border-radius: 5px;
+	border-bottom: solid 2px;
+	border-radius: 30px;
   	border-color: #000000;
 }
 
@@ -243,5 +245,19 @@ footer>p>a{
 	font: 14px/0 Verdana,Arial;
 	font-weight:bold;
 }
+fieldset
+{
+    border:1px solid;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:8px;	
+}
 
+.form_plat
+{
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+	font-family: Arial;
+}
 
