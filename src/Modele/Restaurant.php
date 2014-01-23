@@ -7,3 +7,5 @@ public class Restaurant {
 	public function getCarte() {} // liste [plat][descri] ?
 
 	public function findByTheme(){}
+
+}
