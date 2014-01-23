@@ -73,16 +73,16 @@ class RestoVue
 
 				
 		
-		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table>';
+		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table id="first">';
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
-			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
+			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
 			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
-		$html .= '</table><table>';
+		$html .= '</table><table id = "second">';
 		for($i = round(count($this->data['plats']) / 2);$i<count($this->data['plats']); $i++){			
-			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
+			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
 			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
@@ -92,7 +92,30 @@ class RestoVue
 	}
 
 	public function panier(){
-		$html = '<span style="font-size: 1200%">YOLO</span>';
+		$html = '<form ACTION="resto.php?a=panier" method = post><table>';
+		$panier = $this->data;
+		$html =$html."<tr>
+		<th>Nom Plat</th>
+		<th>Prix Unitaire</th>
+		<th>Quantité</th>
+		<th>Prix Total</th>
+		</tr>";
+		foreach ($panier as $value) {
+			$html = $html."<tr><td>".$value["Plat"]->nom.
+							"</td><td>".$value["Plat"]->prix.
+							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
+							"</td><td>".$value["PrixTot"].
+							"</td></tr>";
+		}
+		$html =$html."<tr>
+		<td></td>
+		<td></td>
+		<td><strong>Total</strong></td>
+		<td>".Panier::calculTotal().'</td>
+		<input type="hidden" name="update" />
+		<td><input type=submit value ="Mise a jour"></td>
+		</tr>';
+		$html = $html."</table></form>";
 		return $html;
 	}
 }

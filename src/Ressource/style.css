@@ -171,5 +171,19 @@ h1 > a{
 	border: solid 5px;
   	border-color: #000000;
 }
+
+#first{
+	float: left;
+	display: inline-block;
+}
+
+.saisie{
+	width: 25px;
+}
+
+#second{
+	float: left;
+	display: inline-block;
+}
 }
 

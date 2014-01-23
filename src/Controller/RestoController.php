@@ -30,20 +30,20 @@ class RestoController extends Controller {
 		self::listeTheme();
 	}
 
-	public static function ajoutPanier() {
-		$plats_resto = Plats::findByResto($_POST['resto']);
-		foreach ($plats_resto as $plat) {
-			if ($_POST[$plat -> __get('id')] > 0)
-				Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
-		}
-	}
-
 	public static function panier() {		
 		if (isset($_POST['resto'])) {
 			$plats_resto = Plats::findByResto($_POST['resto']);
 			foreach ($plats_resto as $plat) {
 				if (intval($_POST[$plat -> __get('id')]) > 0)
 					Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
+			}
+		}
+		if(isset($_POST['update'])){
+			$plats_resto = Panier::getArray();
+			foreach ($plats_resto as $key => $value) {
+				if(intval($_POST[$key]) != $value){
+					Panier::modif($key, $_POST[$key]);
+				}
 			}
 		}
 		$panier = Panier::getPanier();
