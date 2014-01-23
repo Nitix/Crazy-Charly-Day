@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 23 Janvier 2014 à 09:16
+-- Généré le: Jeu 23 Janvier 2014 à 09:56
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -180,6 +180,7 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(128) NOT NULL,
   `description` text NOT NULL,
+  `photo` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
@@ -187,12 +188,12 @@ CREATE TABLE IF NOT EXISTS `theme` (
 -- Contenu de la table `theme`
 --
 
-INSERT INTO `theme` (`id`, `nom`, `description`) VALUES
-(1, 'Chinois', 'Les saveurs asiatiques prés de chez vous'),
-(2, 'Mexicain', 'Ayaya, Caramba !'),
-(3, 'Japonais', 'Les livraisons, cela ne pose pas de sushi.'),
-(4, 'Pizza', 'Une catégorie a part (!) entière. '),
-(5, 'Indien', 'Cuisine Indienne et pakistanaise.');
+INSERT INTO `theme` (`id`, `nom`, `description`, `photo`) VALUES
+(1, 'Chinois', 'Les saveurs asiatiques prés de chez vous', ''),
+(2, 'Mexicain', 'Ayaya, Caramba !', ''),
+(3, 'Japonais', 'Les livraisons, cela ne pose pas de sushi.', ''),
+(4, 'Pizza', 'Une catégorie a part (!) entière. ', ''),
+(5, 'Indien', 'Cuisine Indienne et pakistanaise.', '');
 
 -- --------------------------------------------------------
 
