@@ -82,4 +82,9 @@ class RestoVue
 		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
 		return $html;
 	}
+
+	public function panier(){
+		$html = '<span style="font-size: 1200%">YOLO</span>';
+		return $html;
+	}
 }
