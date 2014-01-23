@@ -73,7 +73,7 @@ class RestoVue
 
 				
 		
-		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table id="first">';
+		$html .='<form method="post" action="resto.php?a=panier"><legend>Carte</legend><table id="first">';
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
