@@ -1,6 +1,6 @@
 <?php
 
-class PLats {
+class Plats {
 
 	private $id;
 	private $nom;

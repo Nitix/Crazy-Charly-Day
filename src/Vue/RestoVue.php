@@ -32,6 +32,8 @@ class RestoVue
 				<a href="resto.php?a=panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />
+
+			<p> <a href="resto.php?"> Accueil</a> </p>
 		</body>
 	</html>';
 	}
