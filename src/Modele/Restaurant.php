@@ -7,15 +7,20 @@ class restaurant {
 	private $adresse;
 	private $contact;
 	private $id_theme;
+	private $photo;
 
 	public function __construct() {}
 
 	//public function getCarte() {} // liste [plat][descri] ?
 
   public function __toString() {
-        return "idutil : ". $this->idutil . "
-				  idplats : ". $this->idplats  ."
-				  nb : ". $this->nb;
+        return "id : ". $this->id . "
+				  nom : ". $this->nom."
+				  description : ". $this->description."
+				  adresse : ".$this->adresse."
+				  contact : ".$this->contact."
+				  id_theme : ".$this->id_theme."
+				  photo : ".$this->photo;
   }
 
  
@@ -44,7 +49,7 @@ class restaurant {
     $c = Base::getConnection();
     
 
-    $query = $c->prepare( "UPDATE restaurant set nom = ? description = ? adresse = ? contact = ? id_theme = ?
+    $query = $c->prepare( "UPDATE restaurant set nom = ?,description = ?, adresse = ?, contact = ?, id_theme = ?, photo =? 
 				                   where id=?");
     
     /* 
@@ -55,7 +60,8 @@ class restaurant {
     $query->bindParam (3, $this->adresse, PDO::PARAM_STR);
     $query->bindParam (4, $this->contact, PDO::PARAM_STR);
     $query->bindParam (5, $this->id_theme, PDO::PARAM_INT);
-    $query->bindParam (6, $this->id, PDO::PARAM_INT);
+    $query->bindParam (6, $this->photo, PDO::PARAM_STR);
+    $query->bindParam (7, $this->id, PDO::PARAM_INT);
 
 
     /*
@@ -103,13 +109,14 @@ class restaurant {
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection();
-    $query = $c->prepare("INSERT INTO restaurant (nom, description, adresse, contact, id_theme) VALUES ( ? , ? , ? , ? , ? )");
+    $query = $c->prepare("INSERT INTO restaurant (nom, description, adresse, contact, id_theme, photo) VALUES ( ? , ? , ? , ? , ?, ? )");
 
     $query->bindParam (1, $this->nom, PDO::PARAM_STR); 
     $query->bindParam (2, $this->description, PDO::PARAM_STR);
     $query->bindParam (3, $this->adresse, PDO::PARAM_STR);
     $query->bindParam (4, $this->contact, PDO::PARAM_STR);
     $query->bindParam (5, $this->id_theme, PDO::PARAM_INT);
+    $query->bindParam (5, $this->photo, PDO::PARAM_STR);
    	$this->id = $c->LastInsertId("restaurant");
     
     $query->execute();
@@ -132,6 +139,7 @@ class restaurant {
 		$bil->adresse=$d['adresse'];
 		$bil->contact=$d['contact'];
 		$bil->id_theme=$d['id_theme'];
+		$bil->photo=$d['photo'];
 
 
       $tab[$bil->id] = $bil;
@@ -157,6 +165,7 @@ class restaurant {
 			$bil->adresse=$d['adresse'];
 			$bil->contact=$d['contact'];
 			$bil->id_theme=$d['id_theme'];
+			$bil->photo=$d['photo'];
 		    $tab[] = $bil;
         }
 		return $tab;
