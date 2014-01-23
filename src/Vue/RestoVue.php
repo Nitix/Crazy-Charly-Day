@@ -47,11 +47,8 @@ class RestoVue
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
 				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
-			<p>'.$chemin.'</p>
-			<section>'.$body.'</section><br />
-			<p> <a href="Accueil"> Théme'.$chem1.'</a> </p>
-			
-			<footer>test</footer>
+			<section>'.$body.'</section><br />			
+			<footer><p>'.$chemin.'</p></footer>
 		</body>
 	</html>';
 	}
