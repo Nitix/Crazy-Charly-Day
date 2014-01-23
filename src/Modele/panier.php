@@ -14,11 +14,9 @@ class panier{
 
   
   public function __toString() {
-        return "id : ". $this->id . "
-				  titre : ". $this->titre  ."
-				  description : ". $this->body."
-          categorie : ".$this->cat_id."
-          date : ".$this->date ;
+        return "idutil : ". $this->idutil . "
+				  idplats : ". $this->idplats  ."
+				  nb : ". $this->nb;
   }
 
  
@@ -31,11 +29,7 @@ class panier{
     throw new Exception($emess, 45);
   }
 
-  
- 
-
     public function __set($attr_name, $attr_val) { 
-
  
       $this->$attr_name = $attr_val;
  
@@ -51,17 +45,15 @@ class panier{
     $c = Base::getConnection();
     
 
-    $query = $c->prepare( "UPDATE billets set titre= ?, body= ? , cat_id= ?, date = ?
-				                   where id=?");
+    $query = $c->prepare( "UPDATE panier set nb=?
+				                   where idutil = ?, idplats=?");
     
     /* 
      * liaison des paramêtres : 
     */
-    $query->bindParam (1, $this->titre, PDO::PARAM_STR);
-    $query->bindParam (2, $this->body, PDO::PARAM_STR); 
-    $query->bindParam (3, $this->cat_id, PDO::PARAM_INT);
-    $query->bindParam (4, $this->date, PDO::PARAM_STR);  
-    $query->bindParam (5, $this->id, PDO::PARAM_INT); 
+    $query->bindParam (1, $this->nb, PDO::PARAM_STR);
+    $query->bindParam (2, $this->idutil, PDO::PARAM_STR); 
+    $query->bindParam (3, $this->idplats, PDO::PARAM_INT);
 
     /*
      * exécution de la requête
@@ -85,10 +77,11 @@ class panier{
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection(); 
-    $query = $c->prepare( "DELETE from billets where id=?");
+    $query = $c->prepare( "DELETE from panier where idutil=? ,idplats=?");
      //liaison des paramêtres : 
 
-    $query->bindParam (1, $this->id, PDO::PARAM_INT); 
+    $query->bindParam (1, $this->id_util, PDO::PARAM_INT);
+    $query->bindParam (2, $this->idplats, PDO::PARAM_INT); 
     $query->execute();
   }
 		
@@ -108,15 +101,14 @@ class panier{
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection();
-    $query = $c->prepare("INSERT INTO billets (titre, body, cat_id, date) VALUES ( ?, ? , ? ,? )");
+    $query = $c->prepare("INSERT INTO panier (nb, idutil, idplats) VALUES ( ?, ? , ? )");
 
-    $query->bindParam (1, $this->titre, PDO::PARAM_STR);
-    $query->bindParam (2, $this->body, PDO::PARAM_STR); 
-    $query->bindParam (3, $this->cat_id, PDO::PARAM_INT);
-    $query->bindParam (4, $this->date, PDO::PARAM_STR); 
+    $query->bindParam (1, $this->nb, PDO::PARAM_STR);
+    $query->bindParam (2, $this->idutil, PDO::PARAM_STR); 
+    $query->bindParam (3, $this->idplats, PDO::PARAM_INT);
     
     $query->execute();
-    $this->id = $c->LastInsertId("billets");
+
     
   }
 		
@@ -129,23 +121,21 @@ class panier{
    *  
    *   @static
    *   @param integer $id OID to find
-   *   @return billets renvoie un objet de type billets
+   *   @return panier renvoie un objet de type panier
    */
-    public static function findById($id) {  
+    public static function findByIdUtil($id) {  
 
       $c = Base::getConnection();
-      $query = $c->prepare("SELECT * from billets where id=?") ;
-      $query->bindParam(1, $id, PDO::PARAM_INT);
+      $query = $c->prepare("SELECT * from panier where idutil =?") ;
+    $query->bindParam (1, $id, PDO::PARAM_INT); 
       $dbres = $query->execute();
       $bil = null;
 
       if($d = $query->fetch(PDO::FETCH_BOTH)){
-        $bil = new Billet();
-        $bil->id=$d['id'];
-        $bil->titre = $d['titre'];
-        $bil->body = $d['body'];
-        $bil->cat_id = $d['cat_id'];
-        $bil->date = $d['date'];
+        $bil = new panier();
+        $bil->idutil=$d['idutil'];
+    	$bil->idplats=$d['idplats'];
+    	$bil->nb=$d['nb'];
       }
       return $bil;
     }
@@ -155,26 +145,24 @@ class panier{
     /**
      *   Finder All
      *
-     *   Renvoie toutes les lignes de la table billets
+     *   Renvoie toutes les lignes de la table panier
      *   sous la forme d'un tableau d'objet
      *  
      *   @static
-     *   @return Array renvoie un tableau de billets
+     *   @return Array renvoie un tableau de panier
      */
     
     public static function findAll() { 
       
       $c = Base::getConnection();
-      $reponse = $c->prepare("SELECT * FROM billets");
+      $reponse = $c->prepare("SELECT * FROM panier");
       $dbres = $reponse->execute(); 
       while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
 
-      $bil = new Billet();
-      $bil->id=$d['id'];
-      $bil->titre = $d['titre'];
-      $bil->body = $d['body'];
-      $bil->cat_id = $d['cat_id'];
-      $bil->date = $d['date'];
+		$bil = new panier();
+		$bil->idutil=$d['idutil'];
+		$bil->idplats=$d['idplats'];
+		$bil->nb=$d['nb'];
 
       $tab[$bil->id] = $bil;
 
@@ -183,47 +171,5 @@ class panier{
       return $tab;
 
     }
-
-  public static function findByTitre($title){
-    $c = Base::getConnection();
-    $query = $c->prepare("SELECT * from billets where titre=?") ;
-    $query->bindParam(1, $title, PDO::PARAM_INT);
-    $dbres = $query->execute();
-    $bil = 0;
-
-    if($d = $query->fetch(PDO::FETCH_BOTH)){
-    $bil = new Billet();
-    $bil->id=$d['id'];
-    $bil->titre = $d['titre'];
-    $bil->body = $d['body'];
-    $bil->cat_id = $d['cat_id'];
-    $bil->date = $d['date'];
-    }
-    return $bil;
-  }
-
-
- public static function findAllByCateg($id_cat) {
-   $c = Base::getConnection();
-      $tab = NULL;
-      $reponse = $c->prepare("SELECT * FROM billets where cat_id=?");
-      $reponse->bindParam(1, $id_cat, PDO::PARAM_INT);
-      $dbres = $reponse->execute(); 
-
-      while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
-      $bil = new Billet();
-      $bil->id=$d['id'];
-      $bil->titre = $d['titre'];
-      $bil->body = $d['body'];
-      $bil->cat_id = $d['cat_id'];
-      $bil->date = $d['date'];
-
-      $tab[$bil->id] = $bil;
-
-      }
-
-      return $tab;
-  }
-
 
 }
