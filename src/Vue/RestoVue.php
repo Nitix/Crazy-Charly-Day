@@ -28,8 +28,8 @@ class RestoVue
 					<h1><a href="resto.php?">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
-				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememnt de choix ! </span>
-				<button>Panier</button>
+				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellemement de choix !</span>
+				<a href="resto.php?a=panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />
 		</body>
