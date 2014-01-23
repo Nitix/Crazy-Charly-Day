@@ -39,3 +39,27 @@ header{
 	margin-bottom: 60px;
 }
 
+.theme{
+	display: inline-block;
+	width: 350px;
+}
+
+.theme>article{
+	text-align: left;
+	display: block;
+	width: 300px;
+}
+
+.theme>article>a{
+
+	display: block;
+	width: 300px;
+	margin-bottom: 50px; 
+}
+.theme>article>a>img{
+	margin: 0 auto;
+	display: block;
+	width: 200px;
+	border-radius: 50%;
+}
+

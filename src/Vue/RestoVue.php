@@ -39,7 +39,9 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<article><a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="Ressource/images_theme/'.$theme->__get('photo').'" />'.$theme->__get('nom').'</a></article>';
+			$html .= '<div class = "theme"><a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
+			$html .= '<article><a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="Ressource/images_theme/'.$theme->__get('photo').'" /></a></article>';
+			$html .= '</div>';
 		}
 		$html .= '</section>';
 		return $html;
