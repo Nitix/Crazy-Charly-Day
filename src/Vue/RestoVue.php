@@ -12,8 +12,7 @@ class RestoVue
 		try{
 			$body = $this->$action();
 		}catch(Exception $e){
-			if(DEBUG)
-				throw $e; 
+			throw $e;
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
 	echo '<!DOCTYPE html>
@@ -33,7 +32,7 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<article><a href="resto.php?a=listResto&amp;id='.$theme->__get('id').'"><img src="'.$theme->__get('image').'" />'.$theme->__get('nom').'</a></article>';
+			$html .= '<article><a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="'.$theme->__get('photo').'" />'.$theme->__get('nom').'</a></article>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -42,14 +41,14 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
-			$html .= '<article><a href="resto.php?a=listPlats&amp;id='.$theme['id'].'"><img src="'.$resto->__get('image').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<article><a href="resto.php?a=plats&amp;id='.$theme['id'].'"><img src="'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
 	}
 	
 	public function listePlats(){
-		$html = '<section><form><fieldset><legend>Carte</legend><table>';
+		$html = '<section><form action="resto.php?a=addPanier"><fieldset><legend>Carte</legend><table>';
 		for($i = 0;$i<count($this->data) / 2; $i++){			
 			$html .= '<tr><td><input type="number" min="0" name='.$this->data[$i]->__get['id'].'></td>
 			<td>'.$this->data[$i]->__get['nom'].'</td>

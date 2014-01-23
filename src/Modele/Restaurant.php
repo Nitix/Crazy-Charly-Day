@@ -1,6 +1,6 @@
 <?php
 
-public class restaurant {
+class restaurant {
 	private $id;
 	private $nom;
 	private $description;
@@ -117,9 +117,6 @@ public class restaurant {
     
   }
 		
-
- 
-    
     public static function findAll() { 
       
       $c = Base::getConnection();
@@ -144,8 +141,11 @@ public class restaurant {
       return $tab;
 
     }
+<<<<<<< HEAD
 
 }
+=======
+>>>>>>> 207f2736aa38a50242a9739553cf29384bccf321
 	public static function findByTheme($theme){
 		$c = Base::getConnection();
 		$reponse = $c->prepare("SELECT * FROM restaurant where id_theme =?");
