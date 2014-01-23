@@ -16,8 +16,11 @@ class RestoVue
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
 	
-	if ($data[a]="resto") {
+	if (($data[a]="resto")) {
 		$chem1 = ">Restaurant";
+	} else if ($data[a]="panier") {
+			$chem1=">Panier";
+		
 	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
