@@ -39,7 +39,7 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<div class = "theme"> <div class = "centreTheme"> <a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
+			$html .= '<div class = "theme"><div class = "centreTheme"> <a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
 			$html .= '<a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="Ressource/images_theme/'.$theme->__get('photo').'" /></a>';
 			$html .= '</div></div>';
 		}
@@ -50,7 +50,10 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
-			$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<div class = "Resto"><div class = "centreResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
+
+
+			//$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
