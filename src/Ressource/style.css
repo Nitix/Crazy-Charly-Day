@@ -172,13 +172,28 @@ h1 > a{
   	border-color: #000000;
 }
 
+form{
+	margin-top: 20px;
+	background-color: #BC1200;
+}
+
 #first{
 	float: left;
 	display: inline-block;
+	margin-right: 25px;
 }
 
 .saisie{
 	width: 25px;
+}
+
+fieldset{
+}
+
+td{
+	color : #FFF;
+	text-align: left;
+	padding-left: 10px;
 }
 
 #second{

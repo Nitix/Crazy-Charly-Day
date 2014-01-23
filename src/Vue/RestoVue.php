@@ -92,30 +92,7 @@ class RestoVue
 	}
 
 	public function panier(){
-		$html = '<form ACTION="resto.php?a=panier" method = post><table>';
-		$panier = $this->data;
-		$html =$html."<tr>
-		<th>Nom Plat</th>
-		<th>Prix Unitaire</th>
-		<th>Quantité</th>
-		<th>Prix Total</th>
-		</tr>";
-		foreach ($panier as $value) {
-			$html = $html."<tr><td>".$value["Plat"]->nom.
-							"</td><td>".$value["Plat"]->prix.
-							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
-							"</td><td>".$value["PrixTot"].
-							"</td></tr>";
-		}
-		$html =$html."<tr>
-		<td></td>
-		<td></td>
-		<td><strong>Total</strong></td>
-		<td>".Panier::calculTotal().'</td>
-		<input type="hidden" name="update" />
-		<td><input type=submit value ="Mise a jour"></td>
-		</tr>';
-		$html = $html."</table></form>";
+		$html = '<span style="font-size: 1200%">YOLO</span>';
 		return $html;
 	}
 }
