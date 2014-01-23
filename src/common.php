@@ -12,7 +12,7 @@ if(!isset($_SESSION['jeton']))
 function loadClasses($classname) {
 	 // le répertoire d'installation de l'application
 	 if (is_file( $classname.'.php' )) require_once $classname.'.php' ;
-	 $myAppDirs = array( 'Controlleur', 'Modele', 'Vue') ; 
+	 $myAppDirs = array( 'Controller', 'Modele', 'Vue') ; 
 	 foreach ($myAppDirs as $cdir) {
 		 $filepath = $cdir .DIRECTORY_SEPARATOR . $classname . '.php' ; 
 		 if (is_file( $filepath )) require_once $filepath ;
