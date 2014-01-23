@@ -61,12 +61,17 @@ class RestoVue
 	}
 	
 	public function listePlats(){
-		$html = '<section><article><h2>'.$this->data['resto']->__get('nom').'</h2>
-		<div>Description : '.$this->data['resto']->__get('description').'<br />
-		Adresse : '.$this->data['resto']->__get('adresse').'<br />
-		Contact : '.$this->data['resto']->__get('nom').'</div>
-		<img src="Ressource/images_resto/'.$this->data['resto']->__get('photo').'" />		
-		<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table>';
+		$html = '<div class = "affplat"><div class="info"><h2>'.$this->data['resto']->__get('nom').'</h2>
+											<div>Description : '.$this->data['resto']->__get('description').'<br />
+											Adresse : '.$this->data['resto']->__get('adresse').'<br />
+											Contact : '.$this->data['resto']->__get('nom').'</div></div>';
+
+		$html .= '<div class = "image"><img src="Ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
+
+
+				
+		
+		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table>';
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
