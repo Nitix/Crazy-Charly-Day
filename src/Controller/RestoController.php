@@ -42,7 +42,7 @@ class RestoController extends Controller {
 		if (isset($_POST['resto'])) {
 			$plats_resto = Plats::findByResto($_POST['resto']);
 			foreach ($plats_resto as $plat) {
-				if ($_POST[$plat -> __get('id')] > 0)
+				if (int_val($_POST[$plat -> __get('id')]) > 0)
 					Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
 			}
 		}
