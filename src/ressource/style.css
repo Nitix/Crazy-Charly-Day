@@ -302,7 +302,9 @@ fieldset
 	font-family: Impact, fantasy;
 	font-size: 15px;
 }
-
+table{
+	border-collapse: collapse;
+}
 table table{
 	border-collapse: collapse;
 	margin-bottom:  3px;
