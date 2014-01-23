@@ -69,14 +69,14 @@ class RestoVue
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
-			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
 		$html .= '</table><table>';
 		for($i = round(count($this->data['plats']) / 2);$i<count($this->data['plats']); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
-			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
 		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
