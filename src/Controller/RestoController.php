@@ -18,12 +18,9 @@ class RestoController extends Controller{
 
 	protected function listeResto($tab){
 		$res=$tab["id"];
-		$billet=Billet::findById($res);
-		$autor=utilisateur::findById($billet->id_util);
-		$lcat = Categorie::findAll();
-		$dixbillet = Billet::findten();
-		$v = new vue($billet, $lcat, $dixbillet, $autor);
-		$v->affichegeneral("billet");
+		$restoByTheme = restaurant::findByTheme($res);
+		$v = new vue($restoByTheme);
+		$v->affichegeneral("listeResto");
 	}
 
 
