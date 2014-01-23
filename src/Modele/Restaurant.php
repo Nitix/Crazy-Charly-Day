@@ -1,6 +1,6 @@
 <?php
 
-public class Restaurant {
+public class restaurant {
 
 	public function __construct() {}
 
