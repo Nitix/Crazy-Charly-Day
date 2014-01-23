@@ -1,23 +1,8 @@
 <?php
 
-class panier{
+class Panier{
 
-
-  public function __construct() {
-    // rien à faire
-  }
- 
-   
-   public function __get($attr_name) {
-    if (property_exists( __CLASS__, $attr_name)) { 
-      return $this->$attr_name;
-    } 
-    $emess = __CLASS__ . ": unknown member $attr_name (getAttr)";
-    throw new Exception($emess, 45);
-  }
-
-
-    public static function add($id_plat, $quantite) {
+ public static function add($id_plat, $quantite) {
     if(!isset($_SESSION['panier'][$id_plat])){
       $_SESSION['panier'][$id_plat] = $quantite;
     }else{
