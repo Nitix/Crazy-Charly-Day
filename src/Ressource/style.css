@@ -174,7 +174,8 @@ h1 > a{
 
 form{
 	margin-top: 20px;
-	background-color: #BC1200;
+	color : #FFF;
+	
 }
 
 #first{
@@ -187,11 +188,8 @@ form{
 	width: 35px;
 }
 
-fieldset{
-}
-
 td{
-	color : #FFF;
+	
 	text-align: left;
 	padding-left: 10px;
 }
@@ -200,5 +198,13 @@ td{
 	float: left;
 	display: inline-block;
 }
+
+.panier{
+	width: 700px;
+	background-color : #BC1200;
+	border-bottom: solid 5px;
+  	border-color: #000000;
+}
+
 }
 
