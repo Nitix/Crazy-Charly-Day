@@ -273,6 +273,7 @@ fieldset
 
 table{
 	border-collapse: collapse;
+	margin-bottom:  3px;
 }
 table td{
 	border-right: 1px solid white;
