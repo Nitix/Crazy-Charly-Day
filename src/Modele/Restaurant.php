@@ -144,30 +144,23 @@ class restaurant {
       return $tab;
 
     }
-	public function findByTheme($theme){
+	public static function findByTheme($theme){
 		$c = Base::getConnection();
 		$reponse = $c->prepare("SELECT * FROM restaurant where id_theme =?");
 		$query->bindParam (1, $theme, PDO::PARAM_STR); 
 		$dbres = $reponse->execute(); 
-
-      while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
-
-		$bil = new restaurant();
-		$bil->id=$d['id'];
-		$bil->nom=$d['nom'];
-		$bil->description=$d['description'];
-		$bil->adresse=$d['adresse'];
-		$bil->contact=$d['contact'];
-		$bil->id_theme=$d['id_theme'];
-
-
-      $tab[$bil->id] = $bil;
-
-      }
-
-      return $tab;
-
-
+	    
+		$tab = array();
+	    while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
+			$bil = new restaurant();
+			$bil->id=$d['id'];
+			$bil->nom=$d['nom'];
+			$bil->description=$d['description'];
+			$bil->adresse=$d['adresse'];
+			$bil->contact=$d['contact'];
+			$bil->id_theme=$d['id_theme'];
+		    $tab[] = $bil;
+        }
+		return $tab;
 	}
-
 }
