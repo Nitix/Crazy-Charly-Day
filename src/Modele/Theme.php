@@ -64,12 +64,11 @@ public class Theme {
     $this->id = $c->LastInsertId("theme");
     
   }
-	public function listeTheme() {
+	public function findAll() {
 		$c = Base::getConnection();
 		$query = $c->prepare("SELECT DISTINCT nom from theme") ;
 	}
 
-	public function listeRest() {}
 
 
 
