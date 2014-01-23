@@ -1,0 +1,9 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteBase /Crazy-Charly-Day/src/
+RewriteRule ^Accueil$ resto.php [L,NC]
+RewriteRule ^Panier$ resto.php?a=panier [L,NC]
+RewriteRule ^Restaurant-([0-9]+)$ resto.php?a=resto&id=$1 [L,NC]
+RewriteRule ^Plats-([0-9]+)$ resto.php?a=plats&id=$1 [L,NC]
+RewriteRule ^([a-z]+)$ resto.php?a=$1 [L,NC]
