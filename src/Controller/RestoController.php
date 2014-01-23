@@ -5,7 +5,8 @@ class RestoController extends Controller{
 	protected static $actions = array(
 		    "theme"   => "listeTheme" ,
 		    "resto"  => "listeResto",
-		    "plats"  => "listePlats"
+		    "plats"  => "listePlats",
+		    "ajoutPanier" => "ajoutPanier"
 	);
 
 	public static function listeTheme(){
@@ -32,6 +33,10 @@ class RestoController extends Controller{
 	// action par defaut de la page visiteur
 	public static function home(){
 		self::listeTheme();
+	}
+	
+	public static function ajoutPanier(){
+		
 	}
 }
 
