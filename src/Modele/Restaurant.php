@@ -117,9 +117,6 @@ class restaurant {
     
   }
 		
-
- 
-    
     public static function findAll() { 
       
       $c = Base::getConnection();
@@ -144,7 +141,7 @@ class restaurant {
       return $tab;
 
     }
-	public function findByTheme($theme){
+	public static function findByTheme($theme){
 		$c = Base::getConnection();
 		$reponse = $c->prepare("SELECT * FROM restaurant where id_theme =?");
 		$query->bindParam (1, $theme, PDO::PARAM_STR); 
