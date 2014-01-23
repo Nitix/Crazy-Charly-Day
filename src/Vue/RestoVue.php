@@ -73,16 +73,16 @@ class RestoVue
 
 				
 		
-		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table>';
+		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table id="first">';
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
-			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
+			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
 			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
-		$html .= '</table><table>';
+		$html .= '</table><table id = "second">';
 		for($i = round(count($this->data['plats']) / 2);$i<count($this->data['plats']); $i++){			
-			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
+			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
 			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
