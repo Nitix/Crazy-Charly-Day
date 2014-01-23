@@ -129,3 +129,13 @@ header{
 	border-radius: 10px;
 }
 
+.descripResto>a{
+	text-decoration: none;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 15px;
+	color: #000000;
+	font: 20px/0 Verdana,Arial;
+	font-weight:bold;
+}
+
