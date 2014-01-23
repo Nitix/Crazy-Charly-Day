@@ -1,0 +1,28 @@
+<?php
+/*
+ * Contient les informations de connexion de la base données
+ */
+class Database
+{
+	/*
+	 * Hote de la base de donnée 
+	 */
+	public static $host     = '';
+		
+	/*
+	 * Table du blog
+	 */
+	public static $database = '';
+		
+	/*
+	 * Utilisateur de la base de donnée
+	 */
+	public static $user     = '';
+	
+	/*
+	 * Mot de passe de la base de donnée
+	 */
+	public static $password = '';
+}
+
+?>
