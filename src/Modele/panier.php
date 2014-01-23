@@ -73,7 +73,7 @@ class panier{
    */
   public function delete() { 
     
-    if (!isset($this->id)) {
+    if (!isset($this->idutil) || !isset($this->idplats) ) {
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection(); 
