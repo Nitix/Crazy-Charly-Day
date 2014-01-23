@@ -290,10 +290,12 @@ fieldset
 
 .titre{
 	font-family: Impact, fantasy;
+	font-size: 15px;
 }
 
 table{
 	border-collapse: collapse;
+	margin-bottom:  3px;
 }
 table td{
 	border-right: 1px solid white;
