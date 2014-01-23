@@ -42,7 +42,7 @@ class RestoVue
 		$html = '<section>';
 		foreach($this->data as $theme){
 			$html .= '<div class = "theme"><div class = "centreTheme"> <a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
-			$html .= '<a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="Ressource/images_theme/'.$theme->__get('photo').'" /></a>';
+			$html .= '<a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="ressource/images_theme/'.$theme->__get('photo').'" /></a>';
 			$html .= '</div></div>';
 		}
 		$html .= '</section>';
@@ -53,7 +53,7 @@ class RestoVue
 		$html = '<section>';
 		foreach($this->data as $resto){
 			$html .= '<div class ="affResto">';
-			$html .= '<div class = "Resto"><div class = "centreResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
+			$html .= '<div class = "Resto"><div class = "centreResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
 			$html .= '<div class ="descripResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</p></div></div>';
 
 			//$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
@@ -68,7 +68,7 @@ class RestoVue
 											Adresse : '.$this->data['resto']->__get('adresse').'<br />
 											Contact : '.$this->data['resto']->__get('nom').'</div></div>';
 
-		$html .= '<div class = "image"><img src="Ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
+		$html .= '<div class = "image"><img src="ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
 
 
 				
