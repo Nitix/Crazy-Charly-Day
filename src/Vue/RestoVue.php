@@ -50,8 +50,9 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
+			$html .= '<div class ="affResto">';
 			$html .= '<div class = "Resto"><div class = "centreResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
-
+			$html .= '<div class ="descripResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</p></div></div>';
 
 			//$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
@@ -69,14 +70,14 @@ class RestoVue
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
-			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
 		$html .= '</table><table>';
 		for($i = round(count($this->data['plats']) / 2);$i<count($this->data['plats']); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
-			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
 		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
