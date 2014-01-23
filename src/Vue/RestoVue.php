@@ -112,12 +112,14 @@ class RestoVue
 		<th>Nom Plat</th>
 		<th>Prix Unitaire</th>
 		<th>Quantité</th>
+		<th>Theme</th>
 		<th>Prix Total</th>
 		</tr>";
 		foreach ($panier as $value) {
 			$html = $html."<tr><td>".$value["Plat"]->nom.
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
+							"<td>".$value["theme"]."</td>".
 							"</td><td>".$value["PrixTot"].
 							"</td><td><button type=submit name=supprimer value=".$value['Plat']->id.">Supprimer</button></td>
 							</tr>";
