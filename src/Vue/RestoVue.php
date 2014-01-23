@@ -15,13 +15,11 @@ class RestoVue
 			throw $e;				
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
-<<<<<<< HEAD
 	
 	if (($data[a]="resto")) {
 		$chem1 = ">Restaurant";
 	} else if ($data[a]="panier") {
 			$chem1=">Panier";
-=======
 	if(isset($_GET['a'])){
 		if (($_GET['a']=="plats")) {
 			$resto = $this->data['resto'];
@@ -37,7 +35,6 @@ class RestoVue
 		}
 	}else{
 		$chemin = '<a href="Acceuil">Accueil</a> ►';
->>>>>>> cebc7ad5dff73e54776e2607aaf1f394a8c7a90c
 	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
