@@ -56,5 +56,10 @@ local.properties
 # proportion of contributors will probably not be using SublimeText
 # *.sublime-project
 
+database.php
+.project
+.settings
+.settings/*
+
 
 .project
