@@ -19,7 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `easydejeuner-new`
 --
-CREATE DATABASE IF NOT EXISTS `easydejeuner-new` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `easydejeuner-new`;
 
 -- --------------------------------------------------------
