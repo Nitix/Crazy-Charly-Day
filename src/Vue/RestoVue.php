@@ -69,10 +69,9 @@ class RestoVue
 		$html = '<section>';
 		foreach($this->data as $resto){
 			$html .= '<div class ="affResto">';
+			$qteplats = count(Plats::findByResto($resto->id));
 			$html .= '<div class = "Resto"><div class = "centreResto"><a href="Plats-'.$resto->__get('id').'"><img src="ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
-			$html .= '<div class ="descripResto"><a href="Plats-'.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</p></div></div>';
-
-			//$html .= '<article><a href="Plats-'.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<div class ="descripResto"><a href="Plats-'.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'<br /><br />Nombre de repas : '.$qteplats.'</p></div></div>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -82,7 +81,7 @@ class RestoVue
 		$html = '<div class = "affplat"><div class="info"><h2>'.$this->data['resto']->__get('nom').'</h2>
 											<div>Description : '.$this->data['resto']->__get('description').'<br />
 											Adresse : '.$this->data['resto']->__get('adresse').'<br />
-											Contact : '.$this->data['resto']->__get('nom').'</div></div>';
+											Contact : '.$this->data['resto']->__get('contact').'</div></div>';
 
 		$html .= '<div class = "image"><img src="ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
 
