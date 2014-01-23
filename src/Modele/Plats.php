@@ -160,7 +160,7 @@ class PLats {
 			$cat -> description = $d['description'];
 			$cat -> photo = $d['photo'];
 			$cat -> prix = $d['prix'];
-			$cat -> prix = $d['id_resto'];
+			$cat -> is_resto = $d['id_resto'];
 
 			$tab[$cat -> id] = $cat;
 
@@ -183,7 +183,7 @@ class PLats {
 		$cat -> description = $d['description'];
 		$cat -> photo = $d['photo'];
 		$cat -> prix = $d['prix'];
-		$cat -> prix = $d['id_resto'];
+		$cat -> id_resto= $d['id_resto'];
 
 		return $cat;
 	}
@@ -203,7 +203,7 @@ class PLats {
 			$cat -> description = $d['description'];
 			$cat -> photo = $d['photo'];
 			$cat -> prix = $d['prix'];
-			$cat -> prix = $d['id_resto'];
+			$cat -> id_resto = $d['id_resto'];
 
 			$tab[] = $cat;
 
