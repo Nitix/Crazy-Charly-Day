@@ -11,8 +11,8 @@ class Panier {
 	}
 
 	public static function modif($id_plat, $quantite) {
-		if ($quantite == 0) {
-			$this -> delete($idplats);
+		if ($quantite <= 0) {
+			Panier::delete($id_plat);
 		} else {
 			$_SESSION['panier'][$id_plat] = $quantite;
 		}
@@ -23,7 +23,7 @@ class Panier {
 		if (isset($_SESSION['panier'])) {
 			foreach ($_SESSION['panier'] as $key => $value) {
 				$plat = Plats::findById($key);
-				$tab2 = array('Plat' => $plat, 'Nb' => $value, 'PrixTot' => $value * $plat -> prix);
+				$tab2 = array('Plat' => $plat, 'Nb' => $value, 'PrixTot' => $value * $plat ->prix);
 				$tab[] = $tab2;
 			}
 		}
@@ -38,10 +38,13 @@ class Panier {
 		$total = 0;
 		if (isset($_SESSION['panier'])) {
 			foreach ($_SESSION['panier'] as $key => $value) {
-				$total += Plats::findById($key) -> prix * $value;
+				$total += Plats::findById($key) ->prix * $value;
 			}
 		}
 		return $total;
 	}
 
+	public static function getArray(){
+		return $_SESSION['panier'];
+	}
 }
