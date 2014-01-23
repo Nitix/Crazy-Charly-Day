@@ -20,7 +20,7 @@ class Panier {
 
 	public static function getPanier() {
 		$tab = array();
-		if (isser($_SESSION['panier'])) {
+		if (isset($_SESSION['panier'])) {
 			foreach ($_SESSION['panier'] as $key => $value) {
 				$plat = Plats::findById($key);
 				$tab2 = array('Plat' => $plat, 'Nb' => $value, 'PrixTot' => $value * $plat -> prix);
@@ -36,7 +36,7 @@ class Panier {
 
 	public static function calculTotal() {
 		$total = 0;
-		if (isser($_SESSION['panier'])) {
+		if (isset($_SESSION['panier'])) {
 			foreach ($_SESSION['panier'] as $key => $value) {
 				$total += Plats::findById($key) -> prix * $value;
 			}
