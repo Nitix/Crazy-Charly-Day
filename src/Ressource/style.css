@@ -18,7 +18,10 @@ header{
 	padding-bottom: 20px;
 	overflow: hidden;
 }
-
+h1 > a{
+	text-decoration: none;
+	color: #31598A;
+}
 #logo{
 	float: left;
 	width: 800px;
@@ -34,8 +37,6 @@ header{
 	display: block;
 	width: 100%;
 	font: 70px/0 'LogoFonte',Verdana,Arial;
-	text-decoration: none;
-	color: #31598A;
 	margin-bottom: 60px;
 }
 
