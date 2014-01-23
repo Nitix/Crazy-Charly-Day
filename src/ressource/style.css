@@ -199,6 +199,7 @@ td{
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 40px;
+	margin-top: 2px;
 }
 
 #valider{
@@ -219,6 +220,7 @@ td{
 	border-radius: 40px;
 	border-width: 0px;
 	vertical-align: middle;
+	margin-top: 15px;
 }
 .button_panier>img{
 	display: inline-block;
@@ -301,9 +303,10 @@ fieldset
 	font-size: 15px;
 }
 
-table{
+table table{
 	border-collapse: collapse;
 	margin-bottom:  3px;
+
 }
 table td{
 	border-right: 1px solid white;
