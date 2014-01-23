@@ -38,7 +38,7 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<article><a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="'.$theme->__get('photo').'" />'.$theme->__get('nom').'</a></article>';
+			$html .= '<article><a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="Ressource/images_theme/'.$theme->__get('photo').'" />'.$theme->__get('nom').'</a></article>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -47,7 +47,7 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
-			$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
