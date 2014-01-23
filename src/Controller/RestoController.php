@@ -46,6 +46,7 @@ class RestoController extends Controller{
 	}
 	
 	public static function panier(){
+		
 	}
 }
 
