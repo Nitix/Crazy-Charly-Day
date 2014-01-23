@@ -78,18 +78,14 @@ class RestoVue
 	}
 	
 	public function listePlats(){
-		$html = '<div class = "affplat"><div class="info"><h2>'.$this->data['resto']->__get('nom').'</h2>
+		$html = '<div class ="affplat"><div class="info"><h2>'.$this->data['resto']->__get('nom').'</h2>
 											<div>Description : '.$this->data['resto']->__get('description').'<br />
 											Adresse : '.$this->data['resto']->__get('adresse').'<br />
 											Contact : '.$this->data['resto']->__get('contact').'</div></div>';
 
 		$html .= '<div class = "image"><img src="ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
-
-
-				
 		
-		$html .="<form method='post' action='Plats-".$_GET['id']."'><fieldset><legend>Carte</legend><table id='first'>";
-
+		$html .="<form class='form_plat' method='post' action='Plats-".$_GET['id']."'><fieldset><legend>Carte</legend><table id='first'>";
 		
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
