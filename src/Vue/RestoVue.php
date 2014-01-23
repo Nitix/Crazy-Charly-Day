@@ -46,7 +46,7 @@ class RestoVue
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellement de choix</span>
-				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
+				<a href="Panier"><button class="button_panier"><img src="ressource/panier.jpg" /><span>'.Panier::calculTotal().' €</span></button></a>
 			</header>
 			<section>'.$body.'</section><br />			
 			<footer><p>'.$chemin.'</p></footer>

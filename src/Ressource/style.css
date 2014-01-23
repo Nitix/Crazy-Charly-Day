@@ -213,7 +213,28 @@ td{
 	border-radius: 30px;
   	border-color: #000000;
 }
+.button_panier{
+	width: 120px;
+	height: 30px;
+	background-color: #FFF;
+	border-radius: 40px;
+	border-width: 0px;
+	vertical-align: middle;
+}
+.button_panier>img{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0;
+	margin-left: -30px;
+	margin-right: 10px;
+	width: 25px;
+	height: 25px;
+}
 
+.button_panier>span{
+	vertical-align: middle;
+	font-weight: bold;
+}
 .panier{
 	width: 700px;
 	background-color : #BC1200;
