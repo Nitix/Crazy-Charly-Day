@@ -33,7 +33,7 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<article><a href="resto.php?a=listResto&amp;id='.$theme['id'].'"><img src="'.$theme['image'].'" />'.$theme['nom'].'</a></article>';
+			$html .= '<article><a href="resto.php?a=listResto&amp;id='.$theme->__get('id').'"><img src="'.$theme->__get('image').'" />'.$theme->__get('nom').'</a></article>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -42,7 +42,7 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
-			$html .= '<article><a href="resto.php?a=listPlats&amp;id='.$theme['id'].'"><img src="'.$resto['image'].'" /><h3>'.$resto['nom'].'</h3></a><p>'.$resto['description'].'</article>';
+			$html .= '<article><a href="resto.php?a=listPlats&amp;id='.$theme['id'].'"><img src="'.$resto->__get('image').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -50,15 +50,20 @@ class RestoVue
 	
 	public function listePlats(){
 		$html = '<section><form><fieldset><legend>Carte</legend><table>';
-		/*for($i = 0;$i<$this->)			
-			$html .= '<article><img src="'.$resto['image'].'" /><h3>'.$resto['nom'].'</h3><p>'.$resto['description'].'</article>';
-		}*/
-		$html .= '</section>';
+		for($i = 0;$i<count($this->data) / 2; $i++){			
+			$html .= '<tr><td><input type="number" min="0" name='.$this->data[$i]->__get['id'].'></td>
+			<td>'.$this->data[$i]->__get['nom'].'</td>
+			<td>'.$this->data[$i]->__get['prix'].'</td>
+			</tr>';
+		}
+		$html .= '</table><table>';
+		for($i = count($this->data) / 2;$i<count($this->data); $i++){			
+			$html .= '<tr><td><input type="number" min="0" name='.$this->data[$i]->__get['id'].'></td>
+			<td>'.$this->data[$i]->__get['nom'].'</td>
+			<td>'.$this->data[$i]->__get['prix'].'</td>
+			</tr>';
+		}
+		$html .= '</table><input type="submit" value="Ajouter au panier"></form></section>';
 		return $html;
 	}
-		/*	<label for="speudo">speudo</label><br />
-			<input required autofocus class=speudo type="text" id="speudo" name="speudo" value="'.$this->data['speudo'].'"/><br />
-			<label for="password">mot de passe</label><br />
-			<input required class=password type="password" id="password" name="password"/><br />
-			<input type="submit" value="Se connecter" />*/
 }
