@@ -2,11 +2,44 @@
 
 public class Theme {
 
-	public function __contruct {}
+	private id;
+	private nom;
+	private descri;
 
-	public function listeTheme() {}
+	public function __contruct {}
+	
+	public function __toString() {
+      	  return "id : ". $this->id . "
+		nom : ". $this->nom  ."				  
+          	date : ".$this->date ;
+	}
+
+	public function __get($attr_name) {
+		if (property_exists( __CLASS__, $attr_name)) { 
+     			return $this->$attr_name;
+    		} 
+    		$emess = __CLASS__ . ": unknown member $attr_name (getAttr)";
+    		throw new Exception($emess, 45);
+	}
+
+	public function __set($attr_name, $attr_val) { 
+		$this->$attr_name = $attr_val;
+	}
+
+	public function update() {
+		if (!isset($this->id)) {
+     	throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
+	}
+	$c = Base::getConnection();
+    	$query = $c->prepare( "UPDATE theme set nom= ?, descri= ? where id=?");
+	$query->bindParam (1, $this->descri, PDO::PARAM_STR);
+	$query->bindParam (2, $this->titre, PDO::PARAM_STR); 
+	$query->bindParam (3, $this->id, PDO::PARAM_INT); 
+	return $query->execute();
+	}
+
+	public function listeTheme() {
+		
+}
 
 	public function listeRest() {}
-
- 
-
