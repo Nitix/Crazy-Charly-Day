@@ -87,4 +87,20 @@ class Theme {
 		return $themes;
 	}
 
+	public static function findByID($id) {
+		$c = Base::getConnection();
+		$query = $c->prepare("SELECT * from theme where id=?");
+		$query -> bindParam(1, $id, PDO::PARAM_INT);
+		$rowbres = $query -> execute();
+		$row = $query->fetch(PDO::FETCH_BOTH);
+		
+		$theme = new Theme();
+		$theme-> __set('id', $row['id']);
+		$theme-> __set('nom', $row['nom']);
+		$theme-> __set('description', $row['description']);
+		$theme-> __set('photo', $row['photo']);	
+		$themes[] = $theme;
+		
+		return $theme;
+	}
 }

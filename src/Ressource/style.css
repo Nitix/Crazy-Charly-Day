@@ -121,10 +121,11 @@ h1 > a{
 	width: 500px;
 	margin-top: 25px;
 	vertical-align: middle;
-	margin-left: -35px;
+	margin-left: -45px;
 	display: inline-block;
 	background-color: #E6E6E6;
 	padding: 10px;
+	height: 115px;
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 10px;
@@ -174,7 +175,8 @@ h1 > a{
 
 form{
 	margin-top: 20px;
-	background-color: #BC1200;
+	color : #FFF;
+	
 }
 
 #first{
@@ -187,11 +189,8 @@ form{
 	width: 35px;
 }
 
-fieldset{
-}
-
 td{
-	color : #FFF;
+	
 	text-align: left;
 	padding-left: 10px;
 }
@@ -200,5 +199,49 @@ td{
 	float: left;
 	display: inline-block;
 }
+
+#valider{
+	display: inline-block;
+	vertical-align: middle;
+	height: 100px;
+	color : #FFF;
+	background-color : #BC1200;
+	border: 1px;
+	border-bottom: solid 5px;
+	border-radius: 5px;
+  	border-color: #000000;
 }
+
+.panier{
+	width: 700px;
+	background-color : #BC1200;
+	border-bottom: solid 5px;
+  	border-color: #000000;
+}
+
+footer{
+	background-color	: #BC1200;;
+	position			: fixed;
+	bottom				: 0;
+	left				: 0;
+	right				: 0;
+	padding-top			: 5px;
+	height				: 30px;
+}
+
+footer>p{
+	text-align: left;
+	margin-left: 20px;
+	color: #FFF;
+	text-decoration: none;
+	font: 14px/0 Verdana,Arial;
+	font-weight:bold;
+}
+footer>p>a{
+	color: #FFF;
+	text-decoration: none;
+	font: 14px/0 Verdana,Arial;
+	font-weight:bold;
+}
+
 

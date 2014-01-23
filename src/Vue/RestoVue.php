@@ -15,11 +15,29 @@ class RestoVue
 			throw $e;				
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
+<<<<<<< HEAD
 	
 	if (($data[a]="resto")) {
 		$chem1 = ">Restaurant";
 	} else if ($data[a]="panier") {
 			$chem1=">Panier";
+=======
+	if(isset($_GET['a'])){
+		if (($_GET['a']=="plats")) {
+			$resto = $this->data['resto'];
+			$theme = Theme::findById($resto->__get('id_theme'));
+			$chemin = '<a href="Acceuil">Accueil</a> ► <a href="Restaurant-'.$theme->__get('id').'"> '.$theme->__get('nom') .'</a> ► '.$resto->__get('nom');
+		} else if ($_GET['a']=="panier") {
+			$chemin = '<a href="Acceuil">Accueil</a> ► Panier';
+		}elseif ($_GET['a']=="resto") {
+			$theme = Theme::findById($this->data[0]->__get('id_theme'));
+			$chemin = '<a href="Acceuil">Accueil</a> ► '. $theme->__get('nom');
+		}else{
+			$chemin = '<a href="Acceuil">Accueil</a> ►';
+		}
+	}else{
+		$chemin = '<a href="Acceuil">Accueil</a> ►';
+>>>>>>> cebc7ad5dff73e54776e2607aaf1f394a8c7a90c
 	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
@@ -37,9 +55,8 @@ class RestoVue
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
 				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
-			<section>'.$body.'</section><br />
-			<p> <a href="Accueil"> Théme'.$chem1.'</a> </p>
-
+			<section>'.$body.'</section><br />			
+			<footer><p>'.$chemin.'</p></footer>
 		</body>
 	</html>';
 	}
@@ -59,10 +76,9 @@ class RestoVue
 		$html = '<section>';
 		foreach($this->data as $resto){
 			$html .= '<div class ="affResto">';
+			$qteplats = count(Plats::findByResto($resto->id));
 			$html .= '<div class = "Resto"><div class = "centreResto"><a href="Plats-'.$resto->__get('id').'"><img src="ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
-			$html .= '<div class ="descripResto"><a href="Plats-'.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</p></div></div>';
-
-			//$html .= '<article><a href="Plats-'.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<div class ="descripResto"><a href="Plats-'.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'<br /><br />Nombre de repas : '.$qteplats.'</p></div></div>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -72,14 +88,16 @@ class RestoVue
 		$html = '<div class = "affplat"><div class="info"><h2>'.$this->data['resto']->__get('nom').'</h2>
 											<div>Description : '.$this->data['resto']->__get('description').'<br />
 											Adresse : '.$this->data['resto']->__get('adresse').'<br />
-											Contact : '.$this->data['resto']->__get('nom').'</div></div>';
+											Contact : '.$this->data['resto']->__get('contact').'</div></div>';
 
 		$html .= '<div class = "image"><img src="ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
 
 
 				
 		
-		$html .='<form method="post" action="Panier"><legend>Carte</legend><table id="first">';
+		$html .="<form method='post' action='Plats-".$_GET['id']."'><fieldset><legend>Carte</legend><table id='first'>";
+
+		
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
@@ -93,12 +111,13 @@ class RestoVue
 			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
-		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
+
+		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input id="valider" type="submit" value="Ajouter au panier"></form></section>';
 		return $html;
 	}
 
 	public function panier(){
-		$html = '<form ACTION="Panier" method = post><table>';
+		$html = '<form class ="panier" ACTION="Panier" method=post><table>';
 		$panier = $this->data;
 		$html =$html."<tr>
 		<th>Nom Plat</th>
@@ -111,10 +130,11 @@ class RestoVue
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
 							"</td><td>".$value["PrixTot"].
-							"</td></tr>";
+							"</td><td><button type=submit name=supprimer value=".$value['Plat']->id.">Supprimer</button></td>
+							</tr>";
 		}
 		$html =$html."<tr>
-		<td></td>
+		<td><input type=submit name ='Vider'value ='Vider le Panier'></td>
 		<td></td>
 		<td><strong>Total</strong></td>
 		<td>".Panier::calculTotal().'</td>
