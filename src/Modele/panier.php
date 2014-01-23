@@ -12,14 +12,12 @@ class panier{
     if (property_exists( __CLASS__, $attr_name)) { 
       return $this->$attr_name;
     } 
-
-
     $emess = __CLASS__ . ": unknown member $attr_name (getAttr)";
     throw new Exception($emess, 45);
   }
 
 
-    public function add($id_plat, $quantite) {
+    public static function add($id_plat, $quantite) {
     if(!isset($_SESSION['panier'][$id_plat])){
       $_SESSION['panier'][$id_plat] = $quantite;
     }else{
@@ -27,7 +25,7 @@ class panier{
     }
   }
 
-  public function modif($id_plat, $quantite) {
+  public static function modif($id_plat, $quantite) {
     if($quantite == 0){
       $this->delete($idplats);
     }else{
@@ -35,7 +33,7 @@ class panier{
     }
   }
 
-  public function getPanier(){
+  public static function getPanier(){
     $tab = array();
     foreach ($_SESSION['panier'] as $key => $value) {
       $plat =Plats::findById($key);
@@ -48,11 +46,11 @@ class panier{
     return($tab);
   }
 
-  public function delete($id_plat) { 
+  public static function delete($id_plat) { 
      unset($_SESSION['panier'][$id_plat]);
   }
 	
-  public function calculTotal(){
+  public static function calculTotal(){
    $total = 0;
     foreach ($_SESSION['panier'] as $key => $value) {
       $total += Plats::findById($key)->prix * $value;7
