@@ -4,7 +4,6 @@
 //crée la session
 session_start();
 
-var_dump($_SESSION);
 //Crée un jeton si besoin
 if(!isset($_SESSION['jeton']))
 	$_SESSION['jeton'] = hash('sha256', uniqid());
