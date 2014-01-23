@@ -70,20 +70,37 @@ class Commande{
    	$this->idcom = $c->LastInsertId("commande");
     	}
 
-	public static function findById($id) {  
+
+	public static function findAll() { 
 		$c = Base::getConnection();
-		$query = $c->prepare("SELECT * from commande where idcom=?") ;
-		$query->bindParam(1, $id, PDO::PARAM_INT);
-		$dbres = $query->execute();
-		$bil = null;
-		if($d = $query->fetch(PDO::FETCH_BOTH)){
-			$bil = new Billet();
-        		$bil->id=$d['id'];
-        		$bil->titre = $d['titre'];
-        		$bil->body = $d['body'];
-        		$bil->cat_id = $d['cat_id'];
-        		$bil->date = $d['date'];
-      		}
+		$reponse = $c->prepare("SELECT * FROM commande");
+		$dbres = $reponse->execute(); 
+		while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
+			$bil = new Commande();
+      			$bil->idcom=$d['idcom'];
+      			$bil->idutil = $d['idutil'];
+      			$bil->domicile = $d['domicile'];
+     			$bil->adresse = $d['adresse'];
+			$tab[$bil->idcom] = $bil;
+		}
+		return $tab;
+
+    }
+
+	public static function findById($id) {  
+      		$c = Base::getConnection();
+     		$query = $c->prepare("SELECT * from commande where idcom=?") ;
+      		$query->bindParam(1, $id, PDO::PARAM_INT);
+      		$dbres = $query->execute();
+      		$bil = null;
+
+      		if($d = $query->fetch(PDO::FETCH_BOTH)){
+        		$bil = new Commande();
+        		$bil->idcom=$d['idcom'];
+        		$bil->idutil = $d['idutil'];
+        		$bil->domicile = $d['domicile'];
+        		$bil->adresse = $d['adresse'];
+     		 }
 	return $bil;
     }
 

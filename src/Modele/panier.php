@@ -21,10 +21,10 @@ class Panier{
   public static function getPanier(){
     $tab = array();
     foreach ($_SESSION['panier'] as $key => $value) {
-      $plat =Plats::findById($key);
+      $plat = Plats::findById($key);
       $tab2 = array('Plat' => $plat,
                     'Nb' => $value,
-                    'PrixTot' => $value * $plat->prix );()
+                    'PrixTot' => $value * $plat->prix );
       $tab[] = $tab2;
     }
 
