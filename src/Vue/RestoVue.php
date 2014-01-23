@@ -16,11 +16,10 @@ class RestoVue
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
 	
-	if (($data[a]="resto")) {
+	if (($data['a']="resto")) {
 		$chem1 = ">Restaurant";
-	} else if ($data[a]="panier") {
+	} else if ($data['a']="panier") {
 			$chem1=">Panier";
-		
 	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
@@ -112,7 +111,7 @@ class RestoVue
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
 							"</td><td>".$value["PrixTot"].
-							"</td><td><input type=submit name ='Supprimer[]' value ='Supprimer'></td>
+							"</td><td><button type=submit name=supprimer value=".$value['Plat']->id.">Supprimer</button></td>
 							</tr>";
 		}
 		$html =$html."<tr>
