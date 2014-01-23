@@ -23,7 +23,7 @@ class RestoController extends Controller{
 
 
 	public static function listePlats(){
-		$res=$tab["id"];
+		$res=$_GET["id"];
 		$platsByResto = Plats::findByResto($res);		
 		$v = new restoVue($platsByResto);
 		$v->displayPage("listePlats");
