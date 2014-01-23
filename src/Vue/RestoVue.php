@@ -20,7 +20,6 @@ class RestoVue
 		$chem1 = ">Restaurant";
 	} else if ($data[a]="panier") {
 			$chem1=">Panier";
-		
 	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
