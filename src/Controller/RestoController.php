@@ -4,21 +4,19 @@ class RestoController extends Controller{
 
 	public function __construct(){
 		$this->action = array(
-		    "theme"   => "listTheme" ,
+		    "theme"   => "listeTheme" ,
 		    "resto"  => "listeResto",
 		    "plats"  => "listePlats"
 		);
 	} 
 
-	protected function listAction(){
-		$allbillets =Billet::findAll();
-		$lcat = Categorie::findAll();
-		$dixbillet = Billet::findten();
-		$v = new vue($allbillets, $lcat, $dixbillet, null);
-		$v->affichegeneral("Listebillet"); 
+	protected function listeTheme(){
+		$alltheme = theme::findAll();
+		$v = new vue($alltheme);
+		$v->restoVue("listeTheme"); 
 	}
 
-	protected function detailAction($tab){
+	protected function listeResto($tab){
 		$res=$tab["id"];
 		$billet=Billet::findById($res);
 		$autor=utilisateur::findById($billet->id_util);
@@ -29,7 +27,7 @@ class RestoController extends Controller{
 	}
 
 
-	protected function catAction($tab){
+	protected function listePlats($tab){
 		$res=$tab["id"];
 		$bcat=Billet::findByCatId($res);
 		$lcat = Categorie::findAll();
@@ -39,7 +37,7 @@ class RestoController extends Controller{
 	}
 
 	// action par defaut de la page visiteur
-	protected function defaultA(){
+	protected function Home(){
 		$allbillets =Billet::findAll();
 		$lcat = Categorie::findAll();
 		$dixbillet = Billet::findten();
