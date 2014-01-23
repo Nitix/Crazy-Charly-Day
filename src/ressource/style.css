@@ -75,6 +75,10 @@ header{
 
 }
 
+.affResto{
+	display: block;
+}
+
 .Resto{
 	margin-top: 30px;
 	margin-bottom: 5px;
@@ -109,5 +113,12 @@ header{
 	border: solid 5px;
   	border-color: #000000;
 
+}
+
+.descripResto{
+	margin-top: -50px;
+	display: inline-block;
+	background-color: #E6E6E6;
+	padding: 10px;
 }
 
