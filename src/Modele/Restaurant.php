@@ -117,9 +117,6 @@ class restaurant {
     
   }
 		
-
- 
-    
     public static function findAll() { 
       
       $c = Base::getConnection();
@@ -144,6 +141,7 @@ class restaurant {
       return $tab;
 
     }
+
 	public static function findByTheme($theme){
 		$c = Base::getConnection();
 		$reponse = $c->prepare("SELECT * FROM restaurant where id_theme =?");
