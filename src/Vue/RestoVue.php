@@ -127,6 +127,7 @@ class RestoVue
 		$html =$html."<tr>
 		<td><input type=submit name ='Vider'value ='Vider le Panier'></td>
 		<td></td>
+		<td></td>
 		<td><strong>Total</strong></td>
 		<td>".Panier::calculTotal().'</td>
 		<input type="hidden" name="update" />
