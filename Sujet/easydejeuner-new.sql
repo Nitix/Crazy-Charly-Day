@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Jeu 23 Janvier 2014 à 09:56
+-- Généré le: Jeu 23 Janvier 2014 à 13:05
 -- Version du serveur: 5.6.12-log
 -- Version de PHP: 5.4.12
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `idutil` int(11) NOT NULL,
   `idcom` int(11) NOT NULL,
   `domicile` tinyint(1) NOT NULL,
-  `adresse` varchar(256) NOT NULL,
+  `adresse` varchar(256) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`idcom`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -152,6 +152,7 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
   `adresse` text NOT NULL,
   `contact` varchar(128) NOT NULL,
   `id_theme` int(11) NOT NULL,
+  `photo` varchar(64) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_theme` (`id_theme`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
@@ -160,15 +161,15 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
 -- Contenu de la table `restaurant`
 --
 
-INSERT INTO `restaurant` (`id`, `nom`, `description`, `adresse`, `contact`, `id_theme`) VALUES
-(1, 'Chez Mario et Luigi', 'Les pizzaiolos du jeu video !!', '8 rue sous le tuyau.\r\nMarioLand', 'mario@marioland', 4),
-(2, 'Fu Mange Tout', 'Le meilleur restaurant chinois de toute la ville.', 'Shangai', 'Fu@MangTout', 1),
-(3, 'Les sushis sont secs', 'Une tradition directement venue du Japon. Tous les sushis de vos souhaits !', '32 Rue de Totoro\r\nNancy', 'Sushi@sonsecs', 3),
-(4, 'SMSexicain', 'Le meilleur restaurant de TextMex. Tapas et Fajitas à volonté (et plus encore).\r\n\r\nPour ceux qui n''ont pas froid aux yeux', '14 rue de la grand place\r\nLaxouVille\r\n', 'sms@xicain', 2),
-(7, 'Pizza the Hut', 'La seule pizzeria qui possède l''achtusse.', '2 impasse de la galaxie\r\nLuxembourgVille', 'pizza@thehut', 4),
-(8, 'Yamazaki', 'De nombreux sushis fait avec amour et avec le poisson le plus frais du marché.', '5 Grand Rue\r\nMalzéville', 'yama@saki', 3),
-(9, 'Little Pakistan', 'Délices du Pakistan', '12 rue du Faubour des Trois Maison, 54000, nancy', 'little@pakistan', 5),
-(10, 'Le Taj Mahal', 'On aime les épices', '45 rue des Fabrique, 54000 Nancy', 'taj@mahal', 5);
+INSERT INTO `restaurant` (`id`, `nom`, `description`, `adresse`, `contact`, `id_theme`, `photo`) VALUES
+(1, 'Chez Mario et Luigi', 'Les pizzaiolos du jeu video !!', '8 rue sous le tuyau.\r\nMarioLand', 'mario@marioland', 4, 'marioetluigi.jpg'),
+(2, 'Fu Mange Tout', 'Le meilleur restaurant chinois de toute la ville.', 'Shangai', 'Fu@MangTout', 1, 'fumangetout.jpg'),
+(3, 'Les sushis sont secs', 'Une tradition directement venue du Japon. Tous les sushis de vos souhaits !', '32 Rue de Totoro\r\nNancy', 'Sushi@sonsecs', 3, 'sushissec.jpg'),
+(4, 'SMSexicain', 'Le meilleur restaurant de TextMex. Tapas et Fajitas à volonté (et plus encore).\r\n\r\nPour ceux qui n''ont pas froid aux yeux', '14 rue de la grand place\r\nLaxouVille\r\n', 'sms@xicain', 2, 'smsexicain'),
+(7, 'Pizza the Hut', 'La seule pizzeria qui possède l''achtusse.', '2 impasse de la galaxie\r\nLuxembourgVille', 'pizza@thehut', 4, 'pizzathehut.jpg'),
+(8, 'Yamazaki', 'De nombreux sushis fait avec amour et avec le poisson le plus frais du marché.', '5 Grand Rue\r\nMalzéville', 'yama@saki', 3, 'yamakazi.jpg'),
+(9, 'Little Pakistan', 'Délices du Pakistan', '12 rue du Faubour des Trois Maison, 54000, nancy', 'little@pakistan', 5, 'littlepakistan.jpg'),
+(10, 'Le Taj Mahal', 'On aime les épices', '45 rue des Fabrique, 54000 Nancy', 'taj@mahal', 5, 'tajmahal.jpg');
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `theme` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(128) NOT NULL,
   `description` text NOT NULL,
-  `photo` varchar(256) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `photo` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
@@ -189,11 +190,11 @@ CREATE TABLE IF NOT EXISTS `theme` (
 --
 
 INSERT INTO `theme` (`id`, `nom`, `description`, `photo`) VALUES
-(1, 'Chinois', 'Les saveurs asiatiques prés de chez vous', ''),
-(2, 'Mexicain', 'Ayaya, Caramba !', ''),
-(3, 'Japonais', 'Les livraisons, cela ne pose pas de sushi.', ''),
-(4, 'Pizza', 'Une catégorie a part (!) entière. ', ''),
-(5, 'Indien', 'Cuisine Indienne et pakistanaise.', '');
+(1, 'Chinois', 'Les saveurs asiatiques prés de chez vous', 'chinois.jpg'),
+(2, 'Mexicain', 'Ayaya, Caramba !', 'mexicain.jpg'),
+(3, 'Japonais', 'Les livraisons, cela ne pose pas de sushi.', 'japonais.jpg'),
+(4, 'Pizza', 'Une catégorie a part (!) entière. ', 'pizza.jpg'),
+(5, 'Indien', 'Cuisine Indienne et pakistanaise.', 'indien.jpg');
 
 -- --------------------------------------------------------
 
@@ -203,9 +204,9 @@ INSERT INTO `theme` (`id`, `nom`, `description`, `photo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(60) NOT NULL,
-  `mp` varchar(64) NOT NULL,
-  `email` varchar(256) NOT NULL,
+  `login` varchar(60) CHARACTER SET utf8 NOT NULL,
+  `mp` varchar(64) CHARACTER SET utf8 NOT NULL,
+  `email` varchar(256) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
