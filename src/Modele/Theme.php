@@ -38,8 +38,40 @@ public class Theme {
 	return $query->execute();
 	}
 
+	public function delete() { 
+		if (!isset($this->id)) {
+			throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
+    		} 
+    	$c = Base::getConnection(); 
+    	$query = $c->prepare( "DELETE from theme where id=?");
+   	$query->bindParam (1, $this->id, PDO::PARAM_INT); 
+    	$query->execute();
+ 	}
+
+	public function insert() { 
+	   if (isset($this->id)) {
+	   throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
+    	   } 
+   	$c = Base::getConnection();
+	$query = $c->prepare("INSERT INTO theme (id, nom, descri) VALUES ( ?, ? , ? S)");
+
+    $query->bindParam (1, $this->titre, PDO::PARAM_STR);
+    $query->bindParam (2, $this->body, PDO::PARAM_STR); 
+    $query->bindParam (3, $this->cat_id, PDO::PARAM_INT);
+    $query->bindParam (4, $this->date, PDO::PARAM_STR); 
+    
+    $query->execute();
+    $this->id = $c->LastInsertId("theme");
+    
+  }
 	public function listeTheme() {
-		
-}
+		$c = Base::getConnection();
+		$query = $c->prepare("SELECT DISTINCT nom from theme") ;
+	}
 
 	public function listeRest() {}
+
+
+
+
+
