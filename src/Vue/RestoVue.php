@@ -20,10 +20,16 @@ class RestoVue
 		<head>
 			<meta charset="utf-8">
 			<title>Super ultra-unlimited PHP Zord team 2.0</title>
-			<link rel="stylesheet" href="data/css/site.css"/>
+			<link rel="stylesheet" href="src\ressource\style.css"/>
 		</head>
 		<body>
-			<header><span class=titre>Super ultra-unlimited PHP Zord team 2.0</span><br />Mmmmh tellememont de choix</header>
+			<header>
+				<div id="logo">
+					<h1>Le Déjeuner Facile</h1>
+					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
+				</div>
+				<span class=titre>Super ultra-unlimited PHP Zord team 2.0</span><br />Mmmmh tellememont de choix
+			</header>
 			<section>'.$body.'</section><br />
 		</body>
 	</html>';
