@@ -105,10 +105,11 @@ class RestoVue
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
 							"</td><td>".$value["PrixTot"].
-							"</td></tr>";
+							"</td><td><input type=submit id=".$value["Plat"]->nom." name ='Supprimer[]' value ='Supprimer'></td>
+							</tr>";
 		}
 		$html =$html."<tr>
-		<td></td>
+		<td><input type=submit name ='Vider'value ='Vider le Panier'></td>
 		<td></td>
 		<td><strong>Total</strong></td>
 		<td>".Panier::calculTotal().'</td>

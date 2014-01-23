@@ -47,4 +47,8 @@ class Panier {
 	public static function getArray(){
 		return $_SESSION['panier'];
 	}
+
+	public static function vider(){
+		unset($_SESSION['panier']);
+	}
 }

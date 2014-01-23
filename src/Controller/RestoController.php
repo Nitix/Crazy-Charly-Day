@@ -38,13 +38,19 @@ class RestoController extends Controller {
 					Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
 			}
 		}
-		if(isset($_POST['update'])){
+		if(isset($_POST['update']) && isset($_SESSION['panier'])){
 			$plats_resto = Panier::getArray();
 			foreach ($plats_resto as $key => $value) {
 				if(intval($_POST[$key]) != $value){
 					Panier::modif($key, $_POST[$key]);
 				}
 			}
+		}
+
+		if(isset($_POST["Vider"]))Panier::vider();
+		
+		if(isset($_POST["Supprimer"])){
+			Panier::delete($_POST["Supprimer"]);
 		}
 		$panier = Panier::getPanier();
 		$v = new RestoVue($panier);
