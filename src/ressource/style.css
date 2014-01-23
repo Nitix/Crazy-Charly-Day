@@ -53,10 +53,11 @@ header{
 }
 
 .centreTheme{
-	padding-top: 70px;
+	padding-top: 50px;
 }
 
 .centreTheme>a{
+	text-decoration: none;
 	display: block;
 	margin: 0 auto;
 }
@@ -64,5 +65,9 @@ header{
 	margin: 0 auto;
 	display: block;
 	width: 200px;
+	border-radius: 50%;
+	border: solid 5px;
+  	border-color: #000000;
+
 }
 
