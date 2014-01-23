@@ -15,11 +15,21 @@ class RestoVue
 			throw $e;				
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
-	
-	if (($data['a']="resto")) {
-		$chem1 = ">Restaurant";
-	} else if ($data['a']="panier") {
-			$chem1=">Panier";
+	if(isset($_GET['a'])){
+		if (($_GET['a']=="plats")) {
+			$resto = $this->data['resto'];
+			$theme = Theme::findById($resto->__get('id_theme'));
+			$chemin = '<a href="Acceuil">Accueil</a> ► <a href="Restaurant-'.$theme->__get('id').'"> '.$theme->__get('nom') .'</a> ► '.$resto->__get('nom');
+		} else if ($_GET['a']=="panier") {
+			$chemin = '<a href="Acceuil">Accueil</a> ► Panier';
+		}elseif ($_GET['a']=="resto") {
+			$theme = Theme::findById($this->data[0]->__get('id_theme'));
+			$chemin = '<a href="Acceuil">Accueil</a> ► '. $theme->__get('nom');
+		}else{
+			$chemin = '<a href="Acceuil">Accueil</a> ►';
+		}
+	}else{
+		$chemin = '<a href="Acceuil">Accueil</a> ►';
 	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
@@ -37,8 +47,10 @@ class RestoVue
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
 				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
+			<p>'.$chemin.'</p>
 			<section>'.$body.'</section><br />
 			<p> <a href="Accueil"> Théme'.$chem1.'</a> </p>
+			
 			<footer>test</footer>
 		</body>
 	</html>';
@@ -100,7 +112,7 @@ class RestoVue
 	}
 
 	public function panier(){
-		$html = '<form class ="panier" ACTION="Panier" method = post><table>';
+		$html = '<form class ="panier" ACTION="Panier" method=post><table>';
 		$panier = $this->data;
 		$html =$html."<tr>
 		<th>Nom Plat</th>
