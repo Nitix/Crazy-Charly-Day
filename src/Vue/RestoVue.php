@@ -56,14 +56,14 @@ class RestoVue
 	public function listePlats(){
 		$html = '<section><form action="resto.php?a=addPanier"><fieldset><legend>Carte</legend><table>';
 		for($i = 0;$i<count($this->data) / 2; $i++){			
-			$html .= '<tr><td><input type="number" min="0" name='.$this->data[$i]->__get('id').'></td>
+			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data[$i]->__get('id').'></td>
 			<td>'.$this->data[$i]->__get('nom').'</td>
 			<td>'.$this->data[$i]->__get('prix').'</td>
 			</tr>';
 		}
 		$html .= '</table><table>';
 		for($i = count($this->data) / 2;$i<count($this->data); $i++){			
-			$html .= '<tr><td><input type="number" min="0" name='.$this->data[$i]->__get('id').'></td>
+			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data[$i]->__get('id').'></td>
 			<td>'.$this->data[$i]->__get('nom').'</td>
 			<td>'.$this->data[$i]->__get('prix').'</td>
 			</tr>';
