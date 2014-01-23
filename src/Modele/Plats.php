@@ -127,12 +127,12 @@ class PLats {
 
 		$d = $query -> fetch(PDO::FETCH_BOTH);
 		$cat = new plats();
-		$cat -> id = $d['id'];
-		$cat -> nom = $d['nom'];
-		$cat -> description = $d['description'];
-		$cat -> photo = $d['photo'];
-		$cat -> prix = $d['prix'];
-		$cat -> prix = $d['id_resto'];
+		$cat ->id = $d['id'];
+		$cat ->nom = $d['nom'];
+		$cat ->description = $d['description'];
+		$cat ->photo = $d['photo'];
+		$cat ->prix = $d['prix'];
+		$cat ->id_resto = $d['id_resto'];
 		return $cat;
 	}
 

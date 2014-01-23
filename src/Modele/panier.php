@@ -35,10 +35,29 @@ class panier{
     }
   }
 
+  public function getPanier(){
+    $tab = array();
+    foreach ($_SESSION['panier'] as $key => $value) {
+      $plat =Plats::findById($key);
+      $tab2 = array('Plat' => $plat,
+                    'Nb' => $value,
+                    'PrixTot' => $value * $plat->prix );()
+      $tab[] = $tab2;
+    }
+
+    return($tab);
+  }
 
   public function delete($id_plat) { 
      unset($_SESSION['panier'][$id_plat]);
   }
-		
+	
+  public function calculTotal(){
+   $total = 0;
+    foreach ($_SESSION['panier'] as $key => $value) {
+      $total += Plats::findById($key)->prix * $value;7
+    }
+    return $total;
+  }
 
 }
