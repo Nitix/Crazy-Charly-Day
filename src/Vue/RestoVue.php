@@ -25,13 +25,15 @@ class RestoVue
 		<body>
 			<header>
 				<div id="logo">
-					<h1><a href="resto.php?">Le Déjeuner Facile</a></h1>
+					<h1><a href="resto.php">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
 				<a href="resto.php?a=panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />
+
+			<p> <a href="resto.php?"> Accueil</a> </p>
 		</body>
 	</html>';
 	}
@@ -61,12 +63,17 @@ class RestoVue
 	}
 	
 	public function listePlats(){
-		$html = '<section><article><h2>'.$this->data['resto']->__get('nom').'</h2>
-		<div>Description : '.$this->data['resto']->__get('description').'<br />
-		Adresse : '.$this->data['resto']->__get('adresse').'<br />
-		Contact : '.$this->data['resto']->__get('nom').'</div>
-		<img src="Ressource/images_resto/'.$this->data['resto']->__get('photo').'" />		
-		<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table>';
+		$html = '<div class = "affplat"><div class="info"><h2>'.$this->data['resto']->__get('nom').'</h2>
+											<div>Description : '.$this->data['resto']->__get('description').'<br />
+											Adresse : '.$this->data['resto']->__get('adresse').'<br />
+											Contact : '.$this->data['resto']->__get('nom').'</div></div>';
+
+		$html .= '<div class = "image"><img src="Ressource/images_resto/'.$this->data['resto']->__get('photo').'" /></div></div>';
+
+
+				
+		
+		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table>';
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
