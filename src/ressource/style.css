@@ -240,6 +240,12 @@ td{
 	background-color : #BC1200;
 	border-bottom: solid 5px;
   	border-color: #000000;
+  	display: inline-block;
+
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;	
+    border-radius:15px;	
+  	
 }
 
 footer{
@@ -281,4 +287,3 @@ fieldset
     margin-right: auto;
 	font-family: Arial;
 }
-
