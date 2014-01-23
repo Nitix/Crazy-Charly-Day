@@ -46,6 +46,9 @@ class RestoController extends Controller {
 					Panier::add($plat -> __get('id'), $_POST[$plat -> __get('id')]);
 			}
 		}
+		$panier = Panier::getPanier();
+		$v = new RestoVue($panier);
+		$v->displayPage('panier');
 	}
 
 }
