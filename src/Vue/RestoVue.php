@@ -32,15 +32,15 @@ class RestoVue
 		<body>
 			<header>
 				<div id="logo">
-					<h1><a href="resto.php">Le Déjeuner Facile</a></h1>
+					<h1><a href="Accueil">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
-				<a href="resto.php?a=panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
+				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />
+			<p> <a href="Accueil"> Théme'.$chem1.'</a> </p>
 
-			<p> <a href="resto.php?"> Théme'.$chem1.'</a> </p>
 		</body>
 	</html>';
 	}
@@ -48,8 +48,8 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<div class = "theme"><div class = "centreTheme"> <a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
-			$html .= '<a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="ressource/images_theme/'.$theme->__get('photo').'" /></a>';
+			$html .= '<div class = "theme"><div class = "centreTheme"> <a href="Restaurant-'.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
+			$html .= '<a href="Restaurant-'.$theme->__get('id').'"><img src="ressource/images_theme/'.$theme->__get('photo').'" /></a>';
 			$html .= '</div></div>';
 		}
 		$html .= '</section>';
@@ -60,10 +60,10 @@ class RestoVue
 		$html = '<section>';
 		foreach($this->data as $resto){
 			$html .= '<div class ="affResto">';
-			$html .= '<div class = "Resto"><div class = "centreResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
-			$html .= '<div class ="descripResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</p></div></div>';
+			$html .= '<div class = "Resto"><div class = "centreResto"><a href="Plats-'.$resto->__get('id').'"><img src="ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
+			$html .= '<div class ="descripResto"><a href="Plats-'.$resto->__get('id').'"><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</p></div></div>';
 
-			//$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			//$html .= '<article><a href="Plats-'.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -80,7 +80,7 @@ class RestoVue
 
 				
 		
-		$html .='<form method="post" action="resto.php?a=panier"><fieldset><legend>Carte</legend><table id="first">';
+		$html .='<form method="post" action="Panier"><legend>Carte</legend><table id="first">';
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input class ="saisie" type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
@@ -99,7 +99,7 @@ class RestoVue
 	}
 
 	public function panier(){
-		$html = '<form ACTION="resto.php?a=panier" method = post><table>';
+		$html = '<form ACTION="Panier" method = post><table>';
 		$panier = $this->data;
 		$html =$html."<tr>
 		<th>Nom Plat</th>
