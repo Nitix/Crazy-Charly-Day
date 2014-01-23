@@ -57,21 +57,26 @@ class RestoVue
 	}
 	
 	public function listePlats(){
-		$html = '<section><form action="resto.php?a=addPanier"><fieldset><legend>Carte</legend><table>';
-		for($i = 0;$i<round(count($this->data) / 2); $i++){			
-			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data[$i]->__get('id').'></td>
-			<td>'.$this->data[$i]->__get('nom').'</td>
-			<td>'.$this->data[$i]->__get('prix').'</td>
+		$html = '<section><article><h2>'.$this->data['resto']->__get('nom').'</h2>
+		<div>Description : '.$this->data['resto']->__get('description').'<br />
+		Adresse : '.$this->data['resto']->__get('adresse').'<br />
+		Contact : '.$this->data['resto']->__get('nom').'</div>
+		<img src="Ressource/images_resto/'.$this->data['resto']->__get('photo').'" />		
+		<form method=post action="resto.php?a=addPanier"><fieldset><legend>Carte</legend><table>';
+		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
+			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
+			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
 			</tr>';
 		}
 		$html .= '</table><table>';
-		for($i = round(count($this->data) / 2);$i<count($this->data); $i++){			
-			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data[$i]->__get('id').'></td>
-			<td>'.$this->data[$i]->__get('nom').'</td>
-			<td>'.$this->data[$i]->__get('prix').'</td>
+		for($i = round(count($this->data['plats']) / 2);$i<count($this->data['plats']); $i++){			
+			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
+			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
 			</tr>';
 		}
-		$html .= '</table><input type="submit" value="Ajouter au panier"></form></section>';
+		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
 		return $html;
 	}
 }
