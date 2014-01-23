@@ -39,7 +39,7 @@ class RestoVue
 			</header>
 			<section>'.$body.'</section><br />
 			<p> <a href="Accueil"> Théme'.$chem1.'</a> </p>
-
+			<footer>test</footer>
 		</body>
 	</html>';
 	}
@@ -95,7 +95,7 @@ class RestoVue
 			</tr>';
 		}
 
-		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
+		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input id="valider" type="submit" value="Ajouter au panier"></form></section>';
 		return $html;
 	}
 
