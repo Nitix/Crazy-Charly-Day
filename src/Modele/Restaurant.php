@@ -166,7 +166,7 @@ class restaurant {
 			$bil->contact=$d['contact'];
 			$bil->id_theme=$d['id_theme'];
 			$bil->photo=$d['photo'];
-		    $tab[] = $bil;
+		    $tab[$bil->id] = $bil;
         }
 		return $tab;
 	}

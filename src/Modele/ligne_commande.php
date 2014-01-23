@@ -1,3 +1,5 @@
 <?php
 
-class ligne_Commande
+class ligne_Commande{
+	
+}
