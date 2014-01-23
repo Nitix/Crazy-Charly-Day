@@ -2,40 +2,38 @@
 
 class RestoController extends Controller{
 
-	public function __construct(){
-		$this->action = array(
+	public static $action = array(
 		    "theme"   => "listeTheme" ,
 		    "resto"  => "listeResto",
 		    "plats"  => "listePlats"
-		);
-	} 
+	);
 
-	protected function listeTheme(){
+	public static function listeTheme(){
 		$alltheme = theme::findAll();
-		$v = new vue($alltheme);
-		$v->restoVue("listeTheme"); 
+		$v = new restoVue($alltheme);
+		$v->displayPage("listeTheme"); 
 	}
 
-	protected function listeResto($tab){
+	public static function listeResto($tab){
 		$res=$tab["id"];
 		$restoByTheme = restaurant::findByTheme($res);
-		$v = new vue($restoByTheme);
-		$v->restoVue("listeResto");
+		$v = new restoVue($restoByTheme);
+		$v->displayPage("listeResto");
 	}
 
 
-	protected function listePlats($tab){
+	public static function listePlats($tab){
 		$res=$tab["id"];
 		$platsByResto = plats::findByResto($res);		
-		$v = new vue($platsByResto);
-		$v->restoVue("listePlats");
+		$v = new restoVue($platsByResto);
+		$v->displayPage("listePlats");
 	}
 
 	// action par defaut de la page visiteur
-	protected function Home(){
+	public static function Home(){
 		$alltheme = theme::findAll();
-		$v = new vue($alltheme);
-		$v->restoVue("listeTheme"); 
+		$v = new restoVue($alltheme);
+		$v->displayPage("listeTheme"); 
 	}
 }
 

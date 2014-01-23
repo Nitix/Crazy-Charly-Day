@@ -1,12 +1,12 @@
 <?php 
 
-public class Theme {
+class Theme {
 
-	private id;
-	private nom;
-	private descri;
+	private $id;
+	private $nom;
+	private $descri;
 
-	public function __contruct {}
+		public function __construct(){}
 	
 	public function __toString() {
       	  return "id : ". $this->id . "
@@ -50,8 +50,8 @@ public class Theme {
 
 	public function insert() { 
 	   if (isset($this->id)) {
-	   throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
-    	   } 
+	   		throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
+    	} 
    	$c = Base::getConnection();
 	$query = $c->prepare("INSERT INTO theme (id, nom, descri) VALUES ( ?, ? , ? S)");
 
@@ -64,13 +64,10 @@ public class Theme {
     $this->id = $c->LastInsertId("theme");
     
   }
-	public function findAll() {
+
+	public static function findAll() {
 		$c = Base::getConnection();
 		$query = $c->prepare("SELECT DISTINCT nom from theme") ;
 	}
 
-
-
-
-
-
+}
