@@ -25,7 +25,7 @@ class RestoVue
 		<body>
 			<header>
 				<div id="logo">
-					<h1>Le Déjeuner Facile</h1>
+					<h1><a href="resto.php?">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
 				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
@@ -39,7 +39,7 @@ class RestoVue
 	public function listeTheme(){
 		$html = '<section>';
 		foreach($this->data as $theme){
-			$html .= '<div class = "theme"> <div class = "centreTheme"> <a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
+			$html .= '<div class = "theme"><div class = "centreTheme"> <a href="resto.php?a=resto&amp;id='.$theme->__get('id').'">'.$theme->__get('nom').'</a>';
 			$html .= '<a href="resto.php?a=resto&amp;id='.$theme->__get('id').'"><img src="Ressource/images_theme/'.$theme->__get('photo').'" /></a>';
 			$html .= '</div></div>';
 		}
@@ -50,7 +50,10 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
-			$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<div class = "Resto"><div class = "centreResto"><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /></a></div></div>';
+
+
+			//$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="Ressource/images_resto/'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
@@ -77,6 +80,11 @@ class RestoVue
 			</tr>';
 		}
 		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
+		return $html;
+	}
+
+	public function panier(){
+		$html = '<span style="font-size: 1200%">YOLO</span>';
 		return $html;
 	}
 }
