@@ -28,7 +28,8 @@ class RestoVue
 					<h1>Le Déjeuner Facile</h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
-				<span class=titre>Super ultra-unlimited PHP Zord team 2.0</span><br />Mmmmh tellememont de choix
+				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
+				<button>Panier</button>
 			</header>
 			<section>'.$body.'</section><br />
 		</body>
