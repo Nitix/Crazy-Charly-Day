@@ -47,7 +47,7 @@ class RestoVue
 	public function listeResto(){
 		$html = '<section>';
 		foreach($this->data as $resto){
-			$html .= '<article><a href="resto.php?a=plats&amp;id='.$theme['id'].'"><img src="'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
+			$html .= '<article><a href="resto.php?a=plats&amp;id='.$resto->__get('id').'"><img src="'.$resto->__get('photo').'" /><h3>'.$resto->__get('nom').'</h3></a><p>'.$resto->__get('description').'</article>';
 		}
 		$html .= '</section>';
 		return $html;
