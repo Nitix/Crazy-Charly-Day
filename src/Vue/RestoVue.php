@@ -12,9 +12,15 @@ class RestoVue
 		try{
 			$body = $this->$action();
 		}catch(Exception $e){
-			throw $e;
+			throw $e;				
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
+	
+	if (($data['a']="resto")) {
+		$chem1 = ">Restaurant";
+	} else if ($data['a']="panier") {
+			$chem1=">Panier";
+	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
 		<head>
@@ -32,8 +38,8 @@ class RestoVue
 				<a href="Panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />
+			<p> <a href="Accueil"> Théme'.$chem1.'</a> </p>
 
-			<p> <a href="Accueil"> Accueil</a> </p>
 		</body>
 	</html>';
 	}
@@ -107,10 +113,11 @@ class RestoVue
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
 							"</td><td>".$value["PrixTot"].
-							"</td></tr>";
+							"</td><td><button type=submit name=supprimer value=".$value['Plat']->id.">Supprimer</button></td>
+							</tr>";
 		}
 		$html =$html."<tr>
-		<td></td>
+		<td><input type=submit name ='Vider'value ='Vider le Panier'></td>
 		<td></td>
 		<td><strong>Total</strong></td>
 		<td>".Panier::calculTotal().'</td>
