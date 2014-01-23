@@ -12,9 +12,13 @@ class RestoVue
 		try{
 			$body = $this->$action();
 		}catch(Exception $e){
-			throw $e;
+			throw $e;				
 			$body = "<section>Méthode d'affichage non correct</section>";
 		}
+	
+	if ($data[a]="resto") {
+		$chem1 = ">Restaurant";
+	}
 	echo '<!DOCTYPE html>
 	<html lang="fr">
 		<head>
@@ -33,7 +37,7 @@ class RestoVue
 			</header>
 			<section>'.$body.'</section><br />
 
-			<p> <a href="resto.php?"> Accueil</a> </p>
+			<p> <a href="resto.php?"> Théme'.$chem1.'</a> </p>
 		</body>
 	</html>';
 	}
