@@ -7,13 +7,15 @@ class PLats{
 	private $description;
 	private $prix;
 	private $photo;
+  private $id_resto;
 
 	public function __toString() {
         return "[". __CLASS__ . "] id : ". $this->id . ":
 				   nom  ". $this->nom  .":
 				   description ". $this->description."
 				   prix". $this->prix."
-				   photo". $this->photo  ;
+				   photo". $this->photo."
+           id_resto".$this->id_resto."]"  ;
   }
 
  
@@ -45,15 +47,15 @@ class PLats{
     $c = Base::getConnection();
     
 
-    $query = $c->prepare( "UPDATE plats set nom= ?, description= ?, prix =  ?, photo =?
+    $query = $c->prepare( "UPDATE plats set nom= ?, description= ?, prix =  ?, photo =?,id_resto =? 
 				                   where id=?");
 
     $query->bindParam (1, $this->nom, PDO::PARAM_STR);
     $query->bindParam (2, $this->description, PDO::PARAM_STR); 
     $query->bindParam (3, $this->prix, PDO::PARAM_INT); 
     $query->bindParam (4, $this->photo, PDO::PARAM_INT); 
-    $query->bindParam (5, $this->id, PDO::PARAM_INT); 
-
+    $query->bindParam (5, $this->id_resto, PDO::PARAM_INT);
+    $query->bindParam (6, $this->id, PDO::PARAM_INT);
 
 
     return $query->execute();
@@ -102,12 +104,14 @@ class PLats{
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection();
-    $query = $c->prepare("INSERT INTO plats (nom, description, prix, photo) VALUES ( ?, ? ,? ,?)");
+    $query = $c->prepare("INSERT INTO plats (nom, description, prix, photo,id_resto) VALUES ( ?, ? ,? ,?,?)");
 
     $query->bindParam (1, $this->nom, PDO::PARAM_STR);
     $query->bindParam (2, $this->description, PDO::PARAM_STR); 
     $query->bindParam (3, $this->prix, PDO::PARAM_INT); 
-    $query->bindParam (4, $this->photo, PDO::PARAM_INT); 
+    $query->bindParam (4, $this->photo, PDO::PARAM_INT);
+    $query->bindParam (5, $this->id_resto, PDO::PARAM_INT);
+    
     
     $query->execute();
     $this->id = $c->LastInsertId("plats");
@@ -139,6 +143,7 @@ class PLats{
       $cat->description = $d['description'];
       $cat->photo = $d['photo'];
       $cat->prix = $d['prix'];
+      $cat->prix = $d['id_resto'];
       return $cat;
     }
 
@@ -167,6 +172,7 @@ class PLats{
       $cat->description = $d['description'];
       $cat->photo = $d['photo'];
       $cat->prix = $d['prix'];
+      $cat->prix = $d['id_resto'];
 
       $tab[$cat->id] = $cat;
 
@@ -184,16 +190,37 @@ class PLats{
 
 
     $d = $query->fetch(PDO::FETCH_BOTH);
-$cat = new plats();
+      $cat = new plats();
       $cat->id=$d['id'];
       $cat->nom = $d['nom'];
       $cat->description = $d['description'];
       $cat->photo = $d['photo'];
       $cat->prix = $d['prix'];
+      $cat->prix = $d['id_resto'];
 
     return $cat;
     }
 
+    public function findByResto($resto){
+      $c = Base::getConnection();
+    $query = $c->prepare("SELECT * from plats where id_resto =?") ;
+    $query->bindParam(1, $resto, PDO::PARAM_INT);
+    $dbres = $query->execute();
+    while ($d = $reponse->fetch(PDO::FETCH_BOTH)){
 
+      $cat = new plats();
+      $cat->id=$d['id'];
+      $cat->nom = $d['nom'];
+      $cat->description = $d['description'];
+      $cat->photo = $d['photo'];
+      $cat->prix = $d['prix'];
+      $cat->prix = $d['id_resto'];
+
+      $tab[$cat->id] = $cat;
+
+      }
+
+      return $tab;
+    }
 
 }
