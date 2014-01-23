@@ -20,26 +20,22 @@ class RestoController extends Controller{
 		$res=$tab["id"];
 		$restoByTheme = restaurant::findByTheme($res);
 		$v = new vue($restoByTheme);
-		$v->affichegeneral("listeResto");
+		$v->restoVue("listeResto");
 	}
 
 
 	protected function listePlats($tab){
 		$res=$tab["id"];
-		$bcat=Billet::findByCatId($res);
-		$lcat = Categorie::findAll();
-		$dixbillet = Billet::findten();
-		$v = new vue($bcat, $lcat, $dixbillet, null);
-		$v->affichegeneral("Listebillet");
+		$platsByResto = plats::findByResto($res);		
+		$v = new vue($platsByResto);
+		$v->restoVue("listePlats");
 	}
 
 	// action par defaut de la page visiteur
 	protected function Home(){
-		$allbillets =Billet::findAll();
-		$lcat = Categorie::findAll();
-		$dixbillet = Billet::findten();
-		$v = new vue($allbillets, $lcat, $dixbillet, null);
-		$v->affichegeneral("ListeBillet");
+		$alltheme = theme::findAll();
+		$v = new vue($alltheme);
+		$v->restoVue("listeTheme"); 
 	}
 }
 
