@@ -53,7 +53,7 @@ class panier{
   public static function calculTotal(){
    $total = 0;
     foreach ($_SESSION['panier'] as $key => $value) {
-      $total += Plats::findById($key)->prix * $value;7
+      $total += Plats::findById($key)->prix * $value;
     }
     return $total;
   }
