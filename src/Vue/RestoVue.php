@@ -28,7 +28,7 @@ class RestoVue
 					<h1><a href="resto.php?">Le Déjeuner Facile</a></h1>
 					<h4>Choisissez, Commandez, Vennez chercher, ou faites vous livrer.
 				</div>
-				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellememont de choix</span>
+				<span class=titre>Super ultra-unlimited PHP Zord team 2.0<br />Mmmmh tellemement de choix !</span>
 				<a href="resto.php?a=panier"><button>Panier : '.Panier::calculTotal().' €</button></a>
 			</header>
 			<section>'.$body.'</section><br />
@@ -70,14 +70,14 @@ class RestoVue
 		for($i = 0;$i<round(count($this->data['plats']) / 2); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
-			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
 		$html .= '</table><table>';
 		for($i = round(count($this->data['plats']) / 2);$i<count($this->data['plats']); $i++){			
 			$html .= '<tr><td><input type="number" min="0" value="0" name='.$this->data['plats'][$i]->__get('id').'></td>
 			<td>'.$this->data['plats'][$i]->__get('nom').'</td>
-			<td>'.$this->data['plats'][$i]->__get('prix').'</td>
+			<td>'.$this->data['plats'][$i]->__get('prix').' €</td>
 			</tr>';
 		}
 		$html .= '</table><input type="hidden" value="'.$this->data['resto']->__get('id').'" name="resto"><input type="submit" value="Ajouter au panier"></form></section>';
