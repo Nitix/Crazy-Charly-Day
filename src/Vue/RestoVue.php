@@ -112,7 +112,7 @@ class RestoVue
 							"</td><td>".$value["Plat"]->prix.
 							'</td><td><input type="number" min="0" value='.$value['Nb'].' name='.$value['Plat']->id.' />'.
 							"</td><td>".$value["PrixTot"].
-							"</td><td><input type=submit id=".$value["Plat"]->nom." name ='Supprimer[]' value ='Supprimer'></td>
+							"</td><td><input type=submit name ='Supprimer[]' value ='Supprimer'></td>
 							</tr>";
 		}
 		$html =$html."<tr>
