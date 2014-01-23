@@ -44,15 +44,19 @@ public class restaurant {
     $c = Base::getConnection();
     
 
-    $query = $c->prepare( "UPDATE restaurant set nb=?
-				                   where idutil = ?, idplats=?");
+    $query = $c->prepare( "UPDATE restaurant set nom = ? description = ? adresse = ? contact = ? id_theme = ?
+				                   where id=?");
     
     /* 
      * liaison des paramêtres : 
     */
-    $query->bindParam (1, $this->nb, PDO::PARAM_STR);
-    $query->bindParam (2, $this->idutil, PDO::PARAM_STR); 
-    $query->bindParam (3, $this->idplats, PDO::PARAM_INT);
+    $query->bindParam (1, $this->nom, PDO::PARAM_STR); 
+    $query->bindParam (2, $this->description, PDO::PARAM_STR);
+    $query->bindParam (3, $this->adresse, PDO::PARAM_STR);
+    $query->bindParam (4, $this->contact, PDO::PARAM_STR);
+    $query->bindParam (5, $this->id_theme, PDO::PARAM_INT);
+    $query->bindParam (6, $this->id, PDO::PARAM_INT);
+
 
     /*
      * exécution de la requête
@@ -76,11 +80,10 @@ public class restaurant {
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection(); 
-    $query = $c->prepare( "DELETE from restaurant where idutil=? ,idplats=?");
+    $query = $c->prepare( "DELETE from restaurant where id =?");
      //liaison des paramêtres : 
 
-    $query->bindParam (1, $this->id_util, PDO::PARAM_INT);
-    $query->bindParam (2, $this->idplats, PDO::PARAM_INT); 
+    $query->bindParam (1, $this->id, PDO::PARAM_INT);
     $query->execute();
   }
 		
@@ -100,11 +103,14 @@ public class restaurant {
       throw new Exception(__CLASS__ . ": Primary Key undefined : cannot update");
     } 
     $c = Base::getConnection();
-    $query = $c->prepare("INSERT INTO restaurant (nb, idutil, idplats) VALUES ( ?, ? , ? )");
+    $query = $c->prepare("INSERT INTO restaurant (nom, description, adresse, contact, id_theme) VALUES ( ?,?,?, ? , ? )");
 
-    $query->bindParam (1, $this->nb, PDO::PARAM_STR);
-    $query->bindParam (2, $this->idutil, PDO::PARAM_STR); 
-    $query->bindParam (3, $this->idplats, PDO::PARAM_INT);
+    $query->bindParam (1, $this->nom, PDO::PARAM_STR); 
+    $query->bindParam (2, $this->description, PDO::PARAM_STR);
+    $query->bindParam (3, $this->adresse, PDO::PARAM_STR);
+    $query->bindParam (4, $this->contact, PDO::PARAM_STR);
+    $query->bindParam (5, $this->id_theme, PDO::PARAM_INT);
+    $query->bindParam (6, $this->id, PDO::PARAM_INT);
     
     $query->execute();
 
